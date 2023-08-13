@@ -1,21 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
+import 'green_hornet.dart';
 
-void main() {
-  runApp(const GreenHornet());
+
+GetStorage? getStorage;
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
+  getStorage = GetStorage();
+  runApp( GreenHornet());
 }
- class GreenHornet extends StatelessWidget {
-   const GreenHornet({super.key});
-
-   @override
-   Widget build(BuildContext context) {
-     return MaterialApp(
-       home: Scaffold(
-         appBar: AppBar(
-           title: Text('Test to upload'),
-           centerTitle: true,
-         ),
-       ),
-     );
-   }
- }
-
