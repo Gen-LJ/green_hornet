@@ -29,6 +29,8 @@ String readTimestamp(int timestamp) {
     time = (diff.inDays / 30).floor().toString() + 'm';
   } else if (diff.inDays > 365) {
     time = '${date.month} ${date.day}, ${date.year}';
+  }else{
+    time = '${date.month}${date.day},${date.year}';
   }
   return time;
 }
