@@ -1,6 +1,7 @@
 
-import 'package:bmi_calculator/screen/multi_image_view/smart_image.dart';
+
 import 'package:flutter/material.dart';
+import 'package:green_hornet/ui/widget/multi_image_view/smart_image.dart';
 
 import 'image_slide_show.dart';
 import 'multi_image_view.dart';
@@ -92,7 +93,7 @@ class ImageViewer extends StatelessWidget {
               Expanded(
                 child: ImageSlideshow(
                   initialPage: 0,
-                  indicatorColor: Colors.red,
+                  //indicatorColor: Colors.red,
                   indicatorBackgroundColor: Colors.grey,
                   isLoop: imageUrls.length > 1,
                   children: imageUrls

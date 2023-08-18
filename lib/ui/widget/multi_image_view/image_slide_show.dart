@@ -1,9 +1,7 @@
 
 import 'dart:async';
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-
 import 'indicator.dart';
 
 
@@ -13,7 +11,7 @@ class ImageSlideshow extends StatefulWidget {
     Key? key,
     required this.children,
     this.width = double.infinity,
-    this.height = 200,
+    this.height = 300,
     this.initialPage = 0,
     this.indicatorColor,
     this.indicatorBackgroundColor = Colors.grey,
@@ -188,6 +186,24 @@ class ImageSlideshowState extends State<ImageSlideshow> {
                   backgroundColor: widget.indicatorBackgroundColor,
                   radius: widget.indicatorRadius,
                   padding: widget.indicatorPadding,
+                );
+              },
+            ),
+          ),
+          Positioned(
+            top: 20,
+            right: 20,
+            child: ValueListenableBuilder<int>(
+              valueListenable: _currentPageNotifier,
+              builder: (context, value, child) {
+                return Container(
+                  height: 20,
+                  width:40,
+                  decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                    color: Colors.grey
+                  ),
+                  child: Center(child: Text(' ${value % widget.children.length +1 } / ${widget.children.length}',style: TextStyle(color: Colors.white,fontSize: 10),)),
                 );
               },
             ),

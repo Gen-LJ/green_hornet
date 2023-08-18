@@ -1,26 +1,27 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:green_hornet/ui/screen/create_post_screen/create_post_screen.dart';
+import 'package:green_hornet/ui/widget/multi_image_view/image_slide_show.dart';
+import 'package:green_hornet/ui/widget/multi_image_view/thread_multi_image_view.dart';
 import 'package:green_hornet/utils/colors.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import '../../../model/thread_post_data_structure.dart';
 import '../../../utils/helper.dart';
+import '../../widget/multi_image_view/smart_image.dart';
 import '../drawer_screen/drawer_widget.dart';
 
 class StoryScreenWidget extends StatefulWidget {
-  const StoryScreenWidget({super.key});
+  final List<String>? imageListKoKo;
+  final List<String>? imageListZawZaw;
+  final List<String>? imageListMaMa;
+  const StoryScreenWidget({super.key, this.imageListKoKo, this.imageListZawZaw, this.imageListMaMa});
 
   @override
   State<StoryScreenWidget> createState() => _StoryScreenWidgetState();
 }
 
 class _StoryScreenWidgetState extends State<StoryScreenWidget> {
-  List<ThreadPostData> dummyData = [
-    ThreadPostData(userName: 'Ko Ko',userThumbnail: '',grade :'Year-1(Diamond)',postTimeStamp: DateTime.now().subtract(new Duration(seconds: 10)),postContent: 'This is first post,Hello',postLikeCount: 4,postCommentCount: 5,),
-    ThreadPostData(userName: 'Mg Mg',userThumbnail: '',grade :'Year-1(Gold)',postTimeStamp: DateTime.now().subtract(new Duration(days: 3)),postContent: 'Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,',postLikeCount: 4,postCommentCount: 5,),
-    ThreadPostData(userName: 'Zaw Zaw',userThumbnail: '',grade :'Year-3(Ruby)',postTimeStamp: DateTime.now().subtract(new Duration(days: 7)),postContent: 'This is test content',postLikeCount: 4,postCommentCount: 5,),
-    ThreadPostData(userName: 'U Kyaw',userThumbnail: '',grade :'Year-5(Platinum)',postTimeStamp: DateTime.now().subtract(new Duration(days: 12)),postContent: 'This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.',postLikeCount: 4,postCommentCount: 5,),
-    ThreadPostData(userName: 'Ma Ma',userThumbnail: '',grade :'Year-4(Sapphire)',postTimeStamp: DateTime.now().subtract(new Duration(days: 16)),postContent: 'This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.',postLikeCount: 4,postCommentCount: 5,),
-  ];
   bool _isLoading = false;
 
   @override
@@ -35,9 +36,21 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
     });
   }
 
+  //int _slideIndex = 0;
+
 
   @override
   Widget build(BuildContext context) {
+
+    List<ThreadPostData> dummyData = [
+      ThreadPostData(userName: 'Ko Ko',userThumbnail: '',grade :'Year-1(Diamond)',postTimeStamp: DateTime.now().subtract(new Duration(seconds: 10)),postImage:  widget.imageListKoKo,postContent: 'This is first post,Hello',postLikeCount: 4,postCommentCount: 5,),
+      ThreadPostData(userName: 'Mg Mg',userThumbnail: '',grade :'Year-1(Gold)',postTimeStamp: DateTime.now().subtract(new Duration(days: 3)),postContent: 'Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,',postLikeCount: 4,postCommentCount: 5,),
+      ThreadPostData(userName: 'Zaw Zaw',userThumbnail: '',grade :'Year-3(Ruby)',postTimeStamp: DateTime.now().subtract(new Duration(days: 7)),postImage : widget.imageListZawZaw,postContent: 'This is test content',postLikeCount: 4,postCommentCount: 5,),
+      ThreadPostData(userName: 'U Kyaw',userThumbnail: '',grade :'Year-5(Platinum)',postTimeStamp: DateTime.now().subtract(new Duration(days: 12)),postContent: 'This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.',postLikeCount: 4,postCommentCount: 5,),
+      ThreadPostData(userName: 'Ma Ma',userThumbnail: '',grade :'Year-4(Sapphire)',postTimeStamp: DateTime.now().subtract(new Duration(days: 16)),postImage : widget.imageListMaMa,postContent: 'This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.',postLikeCount: 4,postCommentCount: 5,),
+    ];
+
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -99,18 +112,18 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
 
   Widget _listTile(ThreadPostData data){
     return Padding(
-      padding: EdgeInsets.fromLTRB(2,2,2,2),
+      padding: EdgeInsets.only(top: 2,bottom: 2),
       child: Card(
           elevation: 2,
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
+                     Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Icon(Icons.person,size: 34,),
                     ),
                     Column(
@@ -130,13 +143,38 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
                     ),
                   ],
                 ),
-                Divider(height: 4,color: Colors.black,),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(8,10,4,10),
-                  child: Text(data.postContent?? '',style: TextStyle(fontSize: 17),),
+              ),
+              //Divider(height: 4,color: Colors.black,),
+              if(data.postImage != null)
+                GestureDetector(
+                  onTap: (){
+                     Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                        builder: (context) => ImageViewer(imageUrls: data.postImage!)));
+                  },
+                  child: ImageSlideshow(
+                      children: data.postImage!.map(
+                            (e) => ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                          child: SmartImage(
+                            e,
+                            fit: BoxFit.cover,
+                            isPost: true,
+                          ),
+                        ),
+                      )
+                          .toList(),),
                 ),
-                Divider(color: Colors.black,),
-                Row(
+              //_PhotoSlide(data),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Text(data.postContent?? '',style: TextStyle(fontSize: 17),),
+              ),
+              Divider(color: Colors.black,),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Row(
@@ -148,7 +186,7 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(width: 10,),
+                    //SizedBox(width: 10,),
                     Row(
                       children: [
                         Icon(Icons.mode_comment),
@@ -160,14 +198,121 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
                     ),
                   ],
                 ),
-              ],
-            ),
+              ),
+            ],
           )
 
       ),
     );
   }
 
+
+
+  // Widget _PhotoSlide(ThreadPostData data){
+  //   return Padding(
+  //     padding: const EdgeInsets.all(8.0),
+  //     child: Stack(
+  //       alignment: Alignment.bottomCenter,
+  //       children:[
+  //         SizedBox(
+  //         //color: Colors.black,
+  //         height: 260,
+  //           child: PageView.builder(
+  //           onPageChanged: (index){
+  //             setState(() {
+  //               _slideIndex = index;
+  //             });
+  //           },
+  //             itemCount: data.postImage?.length,
+  //             itemBuilder: (context,index){
+  //               return Column(
+  //                 children: [
+  //                   SizedBox(),
+  //                   if(data.postImage != null)
+  //                   ClipRRect(
+  //                     borderRadius: BorderRadius.circular(20),
+  //                     child: InkWell(
+  //                       onTap: (){
+  //                         print(' click the ${data.postImage?[index]}');
+  //                       },
+  //                       child: Image.network(data.postImage?[index],
+  //                       height: 260,
+  //                       fit: BoxFit.cover,),
+  //                     ),
+  //                   ),
+  //                 ],
+  //               );
+  //             }),
+  //       ),
+  //         Container(
+  //           //color: Colors.red,
+  //           width: 300,
+  //           height: 20,
+  //           child: Align(
+  //             alignment: Alignment.center,
+  //             child: ListView.builder(
+  //               shrinkWrap: true,
+  //                 scrollDirection: Axis.horizontal,
+  //                 itemCount: data.postImage?.length,
+  //                 itemBuilder: (context,index){
+  //                   return Row(
+  //                     children: [
+  //                       Container(
+  //                         height: 8,
+  //                         width: 8,
+  //                         decoration: BoxDecoration(
+  //                           color: index == _slideIndex ? Colors.white : Colors.grey,
+  //                           shape: BoxShape.circle
+  //                         ),
+  //                       ),
+  //                       SizedBox(width: 10,)
+  //                     ],
+  //                   );
+  //                 }),
+  //           ),
+  //         ),
+  //         Positioned(
+  //           right: 10,
+  //           top: 10,
+  //           child: Container(
+  //             height: 30,
+  //             width: 40,
+  //             decoration: BoxDecoration(
+  //               borderRadius: BorderRadius.circular(5),
+  //               color: Colors.grey[200],
+  //             ),
+  //             child: Center(child: Text(' ${_slideIndex+1} / ${data.postImage?.length}',style: TextStyle(fontSize: 11),)),
+  //           ),
+  //         ),
+  //         Positioned(
+  //           bottom: 10,
+  //           child: SingleChildScrollView(
+  //             child: Row(
+  //               mainAxisAlignment: MainAxisAlignment.center,
+  //               children: [
+  //                 for(int i =0;i<data.postImage!.length;i++)
+  //                   Row(
+  //                     children: [
+  //                       SizedBox(width: 5,),
+  //                       Container(
+  //                         height: 8,
+  //                         width: 8,
+  //                         decoration: BoxDecoration(
+  //                             color: i == _slideIndex ? Colors.white : Colors.grey,
+  //                             shape: BoxShape.circle
+  //                         ),
+  //                       ),
+  //                     ],
+  //                   ),
+  //               ],
+  //             ),
+  //           ),
+  //         )
+  //
+  //       ]
+  //     ),
+  //   );
+//}
 
 
 }

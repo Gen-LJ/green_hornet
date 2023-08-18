@@ -5,7 +5,7 @@ class ThreadPostData{
   final String? grade;
   final DateTime? postTimeStamp;
   final String? postContent;
-  final String? postImage;
+  final List<String>? postImage;
   final int? postLikeCount;
   final int? postCommentCount;
 
@@ -15,7 +15,7 @@ class ThreadPostData{
     this.grade,
     this.postTimeStamp,
     this.postContent,
-    this.postImage,
+     this.postImage,
     this.postLikeCount,
     this.postCommentCount
 

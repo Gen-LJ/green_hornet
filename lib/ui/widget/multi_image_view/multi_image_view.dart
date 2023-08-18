@@ -1,6 +1,7 @@
 
-import 'package:bmi_calculator/screen/multi_image_view/smart_image.dart';
+
 import 'package:flutter/material.dart';
+import 'package:green_hornet/ui/widget/multi_image_view/smart_image.dart';
 
 class MultipleImageView extends StatelessWidget {
   final List<String> imageUrls;
