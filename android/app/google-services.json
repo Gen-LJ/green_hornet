@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "488877692852",
+    "project_id": "green-hornet-prototype",
+    "storage_bucket": "green-hornet-prototype.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488877692852:android:08066fbd89ede8a994c4e1",
+        "android_client_info": {
+          "package_name": "com.lj.green_hornet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "488877692852-1dnh7u85f8vq1vslug7a3vo4j92pn6fj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIqiyaPjWdIkyXXxs2z8mMOIgM4qoqnoE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "488877692852-1dnh7u85f8vq1vslug7a3vo4j92pn6fj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
