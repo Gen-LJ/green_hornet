@@ -9,13 +9,16 @@ import 'package:timeago/timeago.dart' as timeago;
 import '../../../model/thread_post_data_structure.dart';
 import '../../../utils/helper.dart';
 import '../../widget/multi_image_view/smart_image.dart';
+import '../../widget/video_player/chiewie_player.dart';
 import '../drawer_screen/drawer_widget.dart';
 
 class StoryScreenWidget extends StatefulWidget {
+  final String? landscapeVideoSrc;
+  final String? portraitVideoSrc;
   final List<String>? imageListKoKo;
   final List<String>? imageListZawZaw;
   final List<String>? imageListMaMa;
-  const StoryScreenWidget({super.key, this.imageListKoKo, this.imageListZawZaw, this.imageListMaMa});
+  const StoryScreenWidget({super.key, this.imageListKoKo, this.imageListZawZaw, this.imageListMaMa, this.landscapeVideoSrc, this.portraitVideoSrc});
 
   @override
   State<StoryScreenWidget> createState() => _StoryScreenWidgetState();
@@ -44,9 +47,9 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
 
     List<ThreadPostData> dummyData = [
       ThreadPostData(userName: 'Ko Ko',userThumbnail: '',grade :'Year-1(Diamond)',postTimeStamp: DateTime.now().subtract(new Duration(seconds: 10)),postImage:  widget.imageListKoKo,postContent: 'This is first post,Hello',postLikeCount: 4,postCommentCount: 5,),
-      ThreadPostData(userName: 'Mg Mg',userThumbnail: '',grade :'Year-1(Gold)',postTimeStamp: DateTime.now().subtract(new Duration(days: 3)),postContent: 'Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,',postLikeCount: 4,postCommentCount: 5,),
+      ThreadPostData(userName: 'Mg Mg',userThumbnail: '',grade :'Year-1(Gold)',postTimeStamp: DateTime.now().subtract(new Duration(days: 3)),postVideo : widget.landscapeVideoSrc,postContent: 'Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,',postLikeCount: 4,postCommentCount: 5,),
       ThreadPostData(userName: 'Zaw Zaw',userThumbnail: '',grade :'Year-3(Ruby)',postTimeStamp: DateTime.now().subtract(new Duration(days: 7)),postImage : widget.imageListZawZaw,postContent: 'This is test content',postLikeCount: 4,postCommentCount: 5,),
-      ThreadPostData(userName: 'U Kyaw',userThumbnail: '',grade :'Year-5(Platinum)',postTimeStamp: DateTime.now().subtract(new Duration(days: 12)),postContent: 'This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.',postLikeCount: 4,postCommentCount: 5,),
+      ThreadPostData(userName: 'U Kyaw',userThumbnail: '',grade :'Year-5(Platinum)',postTimeStamp: DateTime.now().subtract(new Duration(days: 12)),postVideo : widget.portraitVideoSrc,postContent: 'This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.',postLikeCount: 4,postCommentCount: 5,),
       ThreadPostData(userName: 'Ma Ma',userThumbnail: '',grade :'Year-4(Sapphire)',postTimeStamp: DateTime.now().subtract(new Duration(days: 16)),postImage : widget.imageListMaMa,postContent: 'This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.',postLikeCount: 4,postCommentCount: 5,),
     ];
 
@@ -167,6 +170,8 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
                           .toList(),),
                 ),
               //_PhotoSlide(data),
+               if(data.postVideo != null)
+                 ChewiePlayer(srcs: data.postVideo,),
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: Text(data.postContent?? '',style: TextStyle(fontSize: 17),),

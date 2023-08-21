@@ -8,6 +8,7 @@ class ThreadPostData{
   final List<String>? postImage;
   final int? postLikeCount;
   final int? postCommentCount;
+  final String? postVideo;
 
   ThreadPostData({
     this.userName,
@@ -17,7 +18,8 @@ class ThreadPostData{
     this.postContent,
      this.postImage,
     this.postLikeCount,
-    this.postCommentCount
+    this.postCommentCount,
+    this.postVideo
 
 });
 

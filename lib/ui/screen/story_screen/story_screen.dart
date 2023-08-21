@@ -12,6 +12,9 @@ class StoryScreen extends StatefulWidget {
 
 class _StoryScreenState extends State<StoryScreen> {
 
+  var landscapesrc = "https://assets.mixkit.co/videos/preview/mixkit-spinning-around-the-earth-29351-large.mp4";
+  var potraitsrc = "https://assets.mixkit.co/videos/preview/mixkit-a-girl-blowing-a-bubble-gum-at-an-amusement-park-1226-large.mp4";
+
   var photoListKK = <String>[
     'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
     'https://cdn.pixabay.com/photo/2019/07/07/06/34/network-4321832_1280.jpg',
@@ -36,7 +39,12 @@ class _StoryScreenState extends State<StoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return StoryScreenWidget(imageListKoKo: photoListKK,imageListZawZaw: photoListZZ,imageListMaMa: photoListMM,);
+    return StoryScreenWidget(
+      imageListKoKo: photoListKK,
+      imageListZawZaw: photoListZZ,
+      imageListMaMa: photoListMM,
+      landscapeVideoSrc: landscapesrc,
+      portraitVideoSrc: potraitsrc,);
   }
 
 

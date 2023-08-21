@@ -1,8 +1,10 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:green_hornet/ui/screen/announcement_screen/announcement_screen_widget.dart';
 
 import '../../../utils/colors.dart';
+import '../../widget/video_player/video_player_widget.dart';
 
 class AnnouncementScreen extends StatefulWidget {
    AnnouncementScreen({super.key});
@@ -15,12 +17,6 @@ class AnnouncementScreen extends StatefulWidget {
 class _AnnouncementScreenState extends State<AnnouncementScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Announcement'),
-        backgroundColor: AppColor.themeGreenColor,
-        centerTitle: true,
-      ),
-    );
+    return AnnouncementScreenWidget();
   }
 }

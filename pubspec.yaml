@@ -41,7 +41,8 @@ dependencies:
   get_storage: ^2.1.1
   html: ^0.15.3
   timeago: ^3.5.0
-
+  chewie: ^1.7.0
+  video_player: ^2.7.0
 
 dev_dependencies:
   flutter_test:
