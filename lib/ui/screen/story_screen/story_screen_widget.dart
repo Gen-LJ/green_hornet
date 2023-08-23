@@ -75,6 +75,7 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
               },
                 dateFormatted(date: DateTime.now().toString(),
                     formatType: formatForDateTime(FormatType.date)),
+                title: 'Story'
               ),
             ),
             Padding(

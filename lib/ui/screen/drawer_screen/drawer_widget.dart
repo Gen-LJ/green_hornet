@@ -8,7 +8,7 @@ import '../../widget/common_space_divider_widget.dart';
 import '../../widget/icon_and_image.dart';
 import 'drawer_screen.dart';
 
-Widget buildAppTitleRow(Function() menuFun, String date) {
+Widget buildAppTitleRow(Function() menuFun, String date,{String? title}) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -28,8 +28,12 @@ Widget buildAppTitleRow(Function() menuFun, String date) {
           ),
           horizontalSpace(16),
           Text(
-            "Story",
-            style: pMedium16,
+            title?? '',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 20
+            ),
           ),
         ],
       ),

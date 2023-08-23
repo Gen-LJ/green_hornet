@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:green_hornet/ui/screen/announcement_screen/announcement_detail_screen.dart';
-import 'package:green_hornet/utils/colors.dart';
+import 'package:green_hornet/ui/widget/common_space_divider_widget.dart';
 import '../../../model/announcement_data_structure.dart';
 import '../../../utils/helper.dart';
+import '../drawer_screen/drawer_widget.dart';
 
 
 class AnnouncementScreenWidget extends StatefulWidget {
@@ -68,31 +69,42 @@ class _AnnouncementScreenWidgetState extends State<AnnouncementScreenWidget> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Announcement',
-          //style: TextStyle(color: AppColor.themeGreenColor),
-           ),
-        elevation: 0,
-        centerTitle: true,
-        backgroundColor: AppColor.themeGreenColor,
-      ),
-      body: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-          side: const BorderSide(
-            color: Colors.grey
-          )
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView.separated(
-              separatorBuilder: (context,index){
-                return const Divider(color: Colors.grey,);
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 8,right: 8),
+              child: buildAppTitleRow(() {
+                showPopup(context);
               },
-              itemCount: aDummyData.length,
-              itemBuilder: (context,index){
-                return _announceList(aDummyData[index]);
-              }),
+                dateFormatted(date: DateTime.now().toString(),
+                    formatType: formatForDateTime(FormatType.date)),
+                title: 'Announcement'
+              ),
+            ),
+            verticalSpace(7),
+            Expanded(
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  side: const BorderSide(
+                    color: Colors.grey
+                  )
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListView.separated(
+                      separatorBuilder: (context,index){
+                        return const Divider(color: Colors.grey,);
+                      },
+                      itemCount: aDummyData.length,
+                      itemBuilder: (context,index){
+                        return _announceList(aDummyData[index]);
+                      }),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
