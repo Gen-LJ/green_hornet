@@ -1,10 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
+import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../utils/colors.dart';
+import '../../widget/common_snak_bar_widget.dart';
 
 class CreatePostScreen extends StatefulWidget {
-  const CreatePostScreen({super.key});
+
+   CreatePostScreen({super.key});
 
   @override
   State<CreatePostScreen> createState() => _CreatePostScreenState();
@@ -13,6 +16,45 @@ class CreatePostScreen extends StatefulWidget {
 class _CreatePostScreenState extends State<CreatePostScreen> {
   FocusNode createTextFocus = FocusNode();
   TextEditingController createTextController = TextEditingController();
+  List<File> selectedImages = [];
+  List<String> selectedSubImages = <String>[];
+  final picker = ImagePicker();
+
+  Future getImages() async {
+    final pickedFile = await picker.pickMultiImage(
+        imageQuality: 100, maxHeight: 1000, maxWidth: 1000);
+    List<XFile> xfilePick = pickedFile;
+
+    setState(
+          () {
+        if (xfilePick.isNotEmpty) {
+          for (var i = 0; i < xfilePick.length; i++) {
+            selectedImages.add(File(xfilePick[i].path));
+          }
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Nothing is selected')));
+        }
+      },
+    );
+  }
+
+  // Future getImages1() async {
+  //   final picker = ImagePicker(); //
+  //   final pickedFile = await picker.pickMultiImage(imageQuality: 100, maxHeight: 1000, maxWidth: 1000);
+  //   List<XFile> xFilePick = pickedFile;
+  //
+  //   if (xFilePick.isNotEmpty) {
+  //     for (var i = 0; i < xFilePick.length; i++) {
+  //       selectedSubImages.add(File(xFilePick[i].path).path);
+  //     }
+  //     setState(() {
+  //
+  //     });
+  //   } else {
+  //     commonToast("'Nothing is selected'");
+  //   }
+  // }
 
 
   @override
@@ -30,7 +72,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                 ),
                 onPressed: (){
                   print('Content is ${createTextController.text}');
-                  Navigator.pop(context);
+                  //Navigator.pop(context);
             }, child: Text('POST')),
           )
         ],
@@ -38,37 +80,55 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
         title: Text('Create post'),
 
       ),
-      body: Container(
-        width: size.width,
-        height: size.height - MediaQuery.of(context).viewInsets.bottom,
-        child: Padding(
-          padding: const EdgeInsets.only(right: 14,left: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(Icons.person,size: 30,),
-                    ),
-                    Text("Your Name",
-                      style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
-                  ],
-                ),
-                ElevatedButton(onPressed:(){
-
-                }, child: Text('Photo/Video'),
-                  style: ElevatedButton.styleFrom(
-                    primary: AppColor.themeGreenColor
+      body: Padding(
+        padding: const EdgeInsets.only(right: 14,left: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(Icons.person,size: 30,),
                   ),
-                )
-              ],
+                  Text("Your Name",
+                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+
+                ],
+              ),
+              ElevatedButton(onPressed:(){
+                getImages();
+              }, child: Text('Photo/Video'),
+                style: ElevatedButton.styleFrom(
+                    primary: AppColor.themeGreenColor
+                ),
+              ),
+
+            ],
+          ),
+
+            Divider(height: 1,color: Colors.black,),
+             Container(
+                //color: Colors.red,
+                //width: 300.0,
+                height: 300,
+                child: selectedImages.isEmpty
+                ? const Center(child: Text('Sorry nothing selected!!'))
+                : GridView.builder(
+                  itemCount: selectedImages.length,
+                  gridDelegate:
+                  const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3),
+                  itemBuilder: (BuildContext context, int index) {
+                  return Center(
+                    child: Image.file(selectedImages[index]));
+              },
             ),
-              Divider(height: 1,color: Colors.black,),
-              TextFormField(
+          ),
+            Expanded(
+              child: TextFormField(
                 autofocus: true,
                 focusNode: createTextFocus,
                 decoration: InputDecoration(
@@ -79,9 +139,11 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                 controller: createTextController,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-              )
-            ],
-          ),
+              ),
+            )
+
+
+          ],
         ),
       ),
     );

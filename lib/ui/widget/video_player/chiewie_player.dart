@@ -154,22 +154,20 @@ class _ChewiePlayerState extends State<ChewiePlayer> {
       height: 300,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
-        child: Expanded(
-          child: Center(
-            child: _chewieController != null &&
-                _chewieController!
-                    .videoPlayerController.value.isInitialized
-                ? Chewie(
-              controller: _chewieController!,
-            )
-                : const Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircularProgressIndicator(),
-                SizedBox(height: 20),
-                Text('Loading'),
-              ],
-            ),
+        child: Center(
+          child: _chewieController != null &&
+              _chewieController!
+                  .videoPlayerController.value.isInitialized
+              ? Chewie(
+            controller: _chewieController!,
+          )
+              : const Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircularProgressIndicator(),
+              SizedBox(height: 20),
+              Text('Loading'),
+            ],
           ),
         ),
       ),
