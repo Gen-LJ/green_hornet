@@ -19,6 +19,9 @@ enum FormatType {
   date,
   time,
   ddMMMYYYY,
+  dd,
+  MMM,
+  d
 }
 
 
@@ -39,6 +42,18 @@ String formatForDateTime(FormatType formatType) {
     case FormatType.ddMMMYYYY:
       {
         return "dd MMM,yyyy";
+      }
+    case FormatType.dd:
+      {
+        return "dd";
+      }
+    case FormatType.MMM:
+      {
+        return "MMM";
+      }
+    case FormatType.d:
+      {
+        return "d";
       }
     default:
       {

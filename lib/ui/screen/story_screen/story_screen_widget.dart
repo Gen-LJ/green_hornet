@@ -73,7 +73,8 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
               child: buildAppTitleRow(() {
                 showPopup(context);
               },
-                dateFormatted(date: DateTime.now().toString(), formatType: formatForDateTime(FormatType.date)),
+                dateFormatted(date: DateTime.now().toString(),
+                    formatType: formatForDateTime(FormatType.date)),
               ),
             ),
             Padding(
@@ -101,10 +102,16 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
             Expanded(
               child: Stack(
                 children: [
-                  ListView(
+                  ListView.builder(
                     shrinkWrap: true,
-                    children: dummyData.map(_listTile).toList(),
-                  ),
+                      itemCount: dummyData.length,
+                      itemBuilder: (context,index){
+                        return _listTile(dummyData[index]);
+                      }),
+                  // ListView(
+                  //   shrinkWrap: true,
+                  //   children : dummyData.map(_listTile).toList(),
+                  // ),
                   _isLoading ? Positioned(
                       child: Container(
                         child: Center(
