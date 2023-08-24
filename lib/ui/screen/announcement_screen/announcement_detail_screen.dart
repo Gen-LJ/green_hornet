@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:green_hornet/model/announcement_data_structure.dart';
+import 'package:green_hornet/ui/screen/announcement_screen/pdf_view_screen.dart';
 import 'package:green_hornet/utils/colors.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import '../../widget/multi_image_view/image_slide_show.dart';
@@ -29,6 +30,7 @@ class _AnnouncementDetailState extends State<AnnouncementDetail> {
 
 
   Widget _announcementDetail(AnnouncementData data){
+     int i;
     return Padding(
       padding: EdgeInsets.only(top: 2,bottom: 2),
       child: Card(
@@ -91,6 +93,12 @@ class _AnnouncementDetailState extends State<AnnouncementDetail> {
                 padding: const EdgeInsets.all(10),
                 child: Text(data.postContent?? '',style: TextStyle(fontSize: 17),),
               ),
+              if(data.attachmentFiles != null)
+                TextButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(
+                  builder: (context)=> PdfViewScreen(file: data.attachmentFiles,)));
+               },
+                            child: Text(data.attachmentFiles ?? '')),
               Divider(color: Colors.black,),
               Padding(
                 padding: const EdgeInsets.all(8.0),

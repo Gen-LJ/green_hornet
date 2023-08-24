@@ -10,6 +10,7 @@ class AnnouncementData{
   final String? subtitle2;
   final String? postContent;
   final List<String>? postImage;
+  final String? attachmentFiles;
   final int? postLikeCount;
   final int? postCommentCount;
   final String? postVideo;
@@ -25,6 +26,7 @@ class AnnouncementData{
     this.subtitle2,
     this.postContent,
     this.postImage,
+    this.attachmentFiles,
     this.postLikeCount,
     this.postCommentCount,
     this.postVideo

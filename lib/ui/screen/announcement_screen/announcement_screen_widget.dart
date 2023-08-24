@@ -10,7 +10,8 @@ class AnnouncementScreenWidget extends StatefulWidget {
   final imageListTKhaing;
   final imageListGrade2R;
   final imageListHM;
-  const AnnouncementScreenWidget({super.key, this.imageListTKhaing, this.imageListGrade2R, this.imageListHM});
+  final TKhaingfiles;
+  const AnnouncementScreenWidget({super.key, this.imageListTKhaing, this.imageListGrade2R, this.imageListHM, this.TKhaingfiles});
 
   @override
   State<AnnouncementScreenWidget> createState() => _AnnouncementScreenWidgetState();
@@ -35,6 +36,7 @@ class _AnnouncementScreenWidgetState extends State<AnnouncementScreenWidget> {
         postTitle: 'Reading Room for Grade - 5',
         timeUploaded: DateTime(2023,7,23),
         postContent: 'We have a meeting at monday from 4:00 pm to 6:00 pm. We will be reading our opinion on grade-5',
+        attachmentFiles: widget.TKhaingfiles,
         postLikeCount: 4,
         subtitle1: 'All Day',
         postCommentCount: 5,
@@ -64,6 +66,54 @@ class _AnnouncementScreenWidgetState extends State<AnnouncementScreenWidget> {
         postCommentCount: 50,
       subtitle1: 'December First week',
       subtitle2: 'From Headmaster'),
+      AnnouncementData(userName: 'HeadMaster',
+          userThumbnail: '',
+          grade :'All Student',
+          postTimeStamp: DateTime.now().subtract(Duration(days: 10)),
+          postImage:  widget.imageListHM,
+          postTitle: 'Graduation Ceremony',
+          timeUploaded: DateTime(2022,1,15),
+          postContent: 'The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. ',
+          postLikeCount: 100,
+          postCommentCount: 50,
+          subtitle1: 'December First week',
+          subtitle2: 'From Headmaster'),
+      AnnouncementData(userName: 'HeadMaster',
+          userThumbnail: '',
+          grade :'All Student',
+          postTimeStamp: DateTime.now().subtract(Duration(days: 10)),
+          postImage:  widget.imageListHM,
+          postTitle: 'Graduation Ceremony',
+          timeUploaded: DateTime(2022,1,15),
+          postContent: 'The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. ',
+          postLikeCount: 100,
+          postCommentCount: 50,
+          subtitle1: 'December First week',
+          subtitle2: 'From Headmaster'),
+      AnnouncementData(userName: 'HeadMaster',
+          userThumbnail: '',
+          grade :'All Student',
+          postTimeStamp: DateTime.now().subtract(Duration(days: 10)),
+          postImage:  widget.imageListHM,
+          postTitle: 'Graduation Ceremony',
+          timeUploaded: DateTime(2022,1,15),
+          postContent: 'The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. ',
+          postLikeCount: 100,
+          postCommentCount: 50,
+          subtitle1: 'December First week',
+          subtitle2: 'From Headmaster'),
+      AnnouncementData(userName: 'HeadMaster',
+          userThumbnail: '',
+          grade :'All Student',
+          postTimeStamp: DateTime.now().subtract(Duration(days: 10)),
+          postImage:  widget.imageListHM,
+          postTitle: 'Graduation Ceremony',
+          timeUploaded: DateTime(2022,1,15),
+          postContent: 'The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. The Graduation ceremony will be held at December first week. ',
+          postLikeCount: 100,
+          postCommentCount: 50,
+          subtitle1: 'December First week',
+          subtitle2: 'From Headmaster'),
 
 
     ];
