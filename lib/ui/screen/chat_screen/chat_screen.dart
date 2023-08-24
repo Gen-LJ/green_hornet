@@ -29,16 +29,6 @@ class _ChatScreenState extends State<ChatScreen> {
         centerTitle: true,
         backgroundColor: AppColor.themeGreenColor,
       ),
-       body: Center (
-        child: TextButton(
-          onPressed: (){
-              Navigator.push(context,
-                  MaterialPageRoute(
-                      builder: (context)=> PdfViewScreen(file: file,)));
-          },
-          child: Text(file),
-        )
-    )
     );
   }
 }
