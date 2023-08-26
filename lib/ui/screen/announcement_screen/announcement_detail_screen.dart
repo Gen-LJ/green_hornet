@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:green_hornet/model/announcement_data_structure.dart';
-import 'package:green_hornet/ui/screen/announcement_screen/pdf_view_screen.dart';
+import 'package:green_hornet/ui/widget/pdf_view_screen.dart';
 import 'package:green_hornet/utils/colors.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import '../../widget/multi_image_view/image_slide_show.dart';

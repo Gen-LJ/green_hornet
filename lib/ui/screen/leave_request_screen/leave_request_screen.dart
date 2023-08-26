@@ -9,8 +9,9 @@ class LeaveRequestScreen extends StatefulWidget {
 }
 
 class _LeaveRequestScreenState extends State<LeaveRequestScreen> {
+  var uBaFiles = 'assets_file/Medical_Records.pdf';
   @override
   Widget build(BuildContext context) {
-    return const LeaveRequestWidget();
+    return  LeaveRequestWidget(uBaAttachFile: uBaFiles,);
   }
 }

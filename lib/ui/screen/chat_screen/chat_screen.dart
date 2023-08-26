@@ -4,7 +4,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:green_hornet/ui/screen/announcement_screen/pdf_view_screen.dart';
+import 'package:green_hornet/ui/widget/pdf_view_screen.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 

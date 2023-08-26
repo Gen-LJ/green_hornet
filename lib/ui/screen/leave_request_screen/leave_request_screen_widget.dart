@@ -6,36 +6,47 @@ import '../../../utils/colors.dart';
 import '../../../utils/helper.dart';
 import '../drawer_screen/drawer_widget.dart';
 class LeaveRequestWidget extends StatefulWidget {
-  const LeaveRequestWidget({super.key});
+  final uBaAttachFile;
+   LeaveRequestWidget({super.key, this.uBaAttachFile});
 
   @override
   State<LeaveRequestWidget> createState() => _LeaveRequestWidgetState();
 }
 
 class _LeaveRequestWidgetState extends State<LeaveRequestWidget> {
-  List<LeaveRequestData> dummyLRData = [
-    LeaveRequestData(
-      grade: 'Year-3 (Gold)',
-      studentName: 'Ko Ko',
-      postTitle: 'Sick Leave because of too much rain and Ko Ko is so Lazy to come to school',
-      timeUploaded: DateTime(2021,3,24),
-      startDate: DateTime(2023,1,7),
-      endDate: DateTime(2023,1,14),
-      status: true
-    ),
-    LeaveRequestData(
-        grade: 'Year-4 (Sapphire)',
-        studentName: 'Mg Mg',
-        postTitle: 'Covid Leave',
-        timeUploaded: DateTime(2021,1,5),
-        startDate: DateTime(2022,12,23),
-        endDate: DateTime(2022,12,28),
-        status: false
-    )
-  ];
+
 
   @override
   Widget build(BuildContext context) {
+    List<LeaveRequestData> dummyLRData = [
+      LeaveRequestData(
+          userName: 'U Ba',
+          grade: 'Year-3 (Gold)',
+          studentName: 'Ko Ko',
+          postTimeStamp: DateTime.now().subtract(Duration(days: 2)),
+          postTitle: 'Sick Leave because of too much rain and Ko Ko is so Lazy to come to school',
+          postDescription: 'At some point in your career, you may want to take some time off work. Regardless of your specific reason, you can do this by submitting a leave request to your employer. Knowing how to properly structure your request is a useful skill that may help you throughout your career. In this article, we explain what a leave request is, show you how to write a leave request email and provide a few examples of effective leave request emails that you can use as inspiration when drafting your own.',
+          timeUploaded: DateTime(2021,3,24),
+          startDate: DateTime(2023,1,7),
+          endDate: DateTime(2023,1,14),
+          status: true,
+          attachmentFiles: widget.uBaAttachFile
+      ),
+      LeaveRequestData(
+          userName: 'Daw Mya',
+          grade: 'Year-4 (Sapphire)',
+          studentName: 'Mg Mg',
+          postTimeStamp: DateTime.now().subtract(Duration(days: 5)),
+          postTitle: 'Covid Leave',
+          postDescription: 'At some point in your career, you may want to take some time off work. Regardless of your specific reason, you can do this by submitting a leave request to your employer. Knowing how to properly structure your request is a useful skill that may help you throughout your career. In this article, we explain what a leave request is, show you how to write a leave request email and provide a few examples of effective leave request emails that you can use as inspiration when drafting your own.',
+          timeUploaded: DateTime(2021,1,5),
+          startDate: DateTime(2022,12,23),
+          endDate: DateTime(2022,12,28),
+          status: false
+      )
+    ];
+
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -102,7 +113,7 @@ class _LeaveRequestWidgetState extends State<LeaveRequestWidget> {
       onTap: (){
         Navigator.push(context,
             MaterialPageRoute(
-                builder: (context)=> const LeaveRequestDetail()
+                builder: (context)=>  LeaveRequestDetail(leaveRequestData: data,)
             ));
       },
        leading: 

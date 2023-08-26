@@ -73,7 +73,7 @@ flutter:
   assets:
     - assets/svg/
     - assets_gh/svg/
-    - assets_file/Bilingual-Childrens-Mother-Tongue.pdf
+    - assets_file/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

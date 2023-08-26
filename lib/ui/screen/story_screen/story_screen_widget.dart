@@ -1,7 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:green_hornet/ui/screen/create_post_screen/create_post_screen.dart';
+import 'package:green_hornet/ui/screen/story_screen/create_post_screen.dart';
 import 'package:green_hornet/ui/widget/multi_image_view/image_slide_show.dart';
 import 'package:green_hornet/ui/widget/multi_image_view/thread_multi_image_view.dart';
 import 'package:green_hornet/utils/colors.dart';
