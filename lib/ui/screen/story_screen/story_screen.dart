@@ -3,7 +3,7 @@ import 'package:green_hornet/ui/screen/story_screen/story_screen_widget.dart';
 
 
 class StoryScreen extends StatefulWidget {
-   StoryScreen({super.key});
+   const StoryScreen({super.key});
 
   @override
   State<StoryScreen> createState() => _StoryScreenState();

@@ -20,16 +20,16 @@ Widget buildAppTitleRow(Function() menuFun, String date,{String? title}) {
           // ),
           ElevatedButton(
             onPressed: menuFun,
-            child: assetSvdImageWidget(image: DefaultImages.menuIcn, height: 18, colorFilter: ColorFilter.mode(AppColor.cLabel, BlendMode.srcIn)),
             style: ElevatedButton.styleFrom(
               //elevation: 0,
-              primary: AppColor.themeGreenColor
+              backgroundColor: AppColor.themeGreenColor
             ),
+            child: assetSvdImageWidget(image: DefaultImages.menuIcn, height: 18, colorFilter: ColorFilter.mode(AppColor.cLabel, BlendMode.srcIn)),
           ),
           horizontalSpace(16),
           Text(
             title?? '',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
               fontSize: 20

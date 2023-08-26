@@ -62,7 +62,7 @@ class _LeaveRequestWidgetState extends State<LeaveRequestWidget> {
                       ),
                       onPressed: (){
 
-                      }, child: Row(
+                      }, child: const Row(
                     children: [
                       Text('Add Request',style: TextStyle(color: Colors.white),),
                       Icon(Icons.add_rounded,color: Colors.white,),
@@ -102,7 +102,7 @@ class _LeaveRequestWidgetState extends State<LeaveRequestWidget> {
       onTap: (){
         Navigator.push(context,
             MaterialPageRoute(
-                builder: (context)=> LeaveRequestDetail()
+                builder: (context)=> const LeaveRequestDetail()
             ));
       },
        leading: 
@@ -132,22 +132,22 @@ class _LeaveRequestWidgetState extends State<LeaveRequestWidget> {
         children: [
           Row(
             children: [
-              Text('${data.studentName ?? ''}',style: TextStyle(fontWeight: FontWeight.bold),),
+              Text(data.studentName ?? '',style: const TextStyle(fontWeight: FontWeight.bold),),
               horizontalSpace(7),
-              Text('${data.grade ?? ''}')
+              Text(data.grade ?? '')
             ],
           ),
           Row(
             children: [
               //Text('From '),
               Text(dateFormatted(date: data.startDate.toString(),
-                  formatType: formatForDateTime(FormatType.date)),style: TextStyle(
+                  formatType: formatForDateTime(FormatType.date)),style: const TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold
               ),),
-              Text(' To '),
+              const Text(' To '),
               Text(dateFormatted(date: data.endDate.toString(),
-                  formatType: formatForDateTime(FormatType.date)),style: TextStyle(
+                  formatType: formatForDateTime(FormatType.date)),style: const TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold),)
             ],
@@ -163,14 +163,14 @@ class _LeaveRequestWidgetState extends State<LeaveRequestWidget> {
         ),
           onPressed: (){
 
-          }, child: Text('Pending',style: TextStyle(color: Colors.white),)) :
+          }, child: const Text('Pending',style: TextStyle(color: Colors.white),)) :
         TextButton(
             style: TextButton.styleFrom(
                 backgroundColor: AppColor.themeGreenColor
             ),
             onPressed: (){
 
-            }, child: Text('Approved',style: TextStyle(color: Colors.white),))
+            }, child: const Text('Approved',style: TextStyle(color: Colors.white),))
 
     );
 

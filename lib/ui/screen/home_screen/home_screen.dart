@@ -19,14 +19,14 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         backgroundColor: AppColor.themeGreenColor
     ),
-    body: Card(
+    body: const Card(
       elevation: 2,
-      child: Container(
+      child: SizedBox(
         height: 60,
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(8.0),
                 child: Icon(Icons.person,size: 30,),
               ),
               Text("Your Name",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),

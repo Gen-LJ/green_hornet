@@ -29,7 +29,7 @@ class StoryScreenWidget extends StatefulWidget {
 }
 
 class _StoryScreenWidgetState extends State<StoryScreenWidget> {
-  bool _isLoading = false;
+  final bool _isLoading = false;
 
   @override
   void initState(){
@@ -37,11 +37,11 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
 
   }
 
-  Future<void> _takeUserDataFromFB() async{
-    setState(() {
-      _isLoading = true;
-    });
-  }
+  // Future<void> _takeUserDataFromFB() async{
+  //   setState(() {
+  //     _isLoading = true;
+  //   });
+  // }
 
   //int _slideIndex = 0;
 
@@ -50,17 +50,17 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
   Widget build(BuildContext context) {
 
     List<ThreadPostData> dummyData = [
-      ThreadPostData(userName: 'Ko Ko',userThumbnail: '',grade :'Year-1(Diamond)',postTimeStamp: DateTime.now().subtract(new Duration(seconds: 10)),postImage:  widget.imageListKoKo,postContent: 'This is first post,Hello',postLikeCount: 4,postCommentCount: 5,),
-      ThreadPostData(userName: 'Mg Mg',userThumbnail: '',grade :'Year-1(Gold)',postTimeStamp: DateTime.now().subtract(new Duration(days: 3)),postVideo : widget.landscapeVideoSrc,postContent: 'Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,',postLikeCount: 10,postCommentCount: 6,),
-      ThreadPostData(userName: 'Zaw Zaw',userThumbnail: '',grade :'Year-3(Ruby)',postTimeStamp: DateTime.now().subtract(new Duration(days: 7)),postImage : widget.imageListZawZaw,postContent: 'This is test content',postLikeCount: 13,postCommentCount: 4,),
-      ThreadPostData(userName: 'U Kyaw',userThumbnail: '',grade :'Year-5(Platinum)',postTimeStamp: DateTime.now().subtract(new Duration(days: 12)),postVideo : widget.portraitVideoSrc,postContent: 'This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.',postLikeCount: 16,postCommentCount: 3,),
-      ThreadPostData(userName: 'Ma Ma',userThumbnail: '',grade :'Year-4(Sapphire)',postTimeStamp: DateTime.now().subtract(new Duration(days: 16)),postImage : widget.imageListMaMa,postContent: 'This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.',postLikeCount: 20,postCommentCount: 1,),
-      ThreadPostData(userName: 'Aung Aung',userThumbnail: '',grade :'Year-3(Sapphire)',postTimeStamp: DateTime.now().subtract(new Duration(days: 20)),postImage : widget.imageListAA,postContent: 'According to the jaw fragments of primates found in Myaing Township, Magway Division, Myanmar history can be assumed to have started 40 million years ago. Similarly, the discovery named Pondaungia found in Pondaung area and the discovery named Mogaungensis found near Mogaung village indicate that anthropoids have been living in Myanmar since 40 million years ago. A higher primate found in Pondaung area, Myanmar, called Dawn Ape with the scientific name of Amphipithecus, was tested to be 40 million years old.'
+      ThreadPostData(userName: 'Ko Ko',userThumbnail: '',grade :'Year-1(Diamond)',postTimeStamp: DateTime.now().subtract(const Duration(seconds: 10)),postImage:  widget.imageListKoKo,postContent: 'This is first post,Hello',postLikeCount: 4,postCommentCount: 5,),
+      ThreadPostData(userName: 'Mg Mg',userThumbnail: '',grade :'Year-1(Gold)',postTimeStamp: DateTime.now().subtract(const Duration(days: 3)),postVideo : widget.landscapeVideoSrc,postContent: 'Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,',postLikeCount: 10,postCommentCount: 6,),
+      ThreadPostData(userName: 'Zaw Zaw',userThumbnail: '',grade :'Year-3(Ruby)',postTimeStamp: DateTime.now().subtract(const Duration(days: 7)),postImage : widget.imageListZawZaw,postContent: 'This is test content',postLikeCount: 13,postCommentCount: 4,),
+      ThreadPostData(userName: 'U Kyaw',userThumbnail: '',grade :'Year-5(Platinum)',postTimeStamp: DateTime.now().subtract(const Duration(days: 12)),postVideo : widget.portraitVideoSrc,postContent: 'This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.',postLikeCount: 16,postCommentCount: 3,),
+      ThreadPostData(userName: 'Ma Ma',userThumbnail: '',grade :'Year-4(Sapphire)',postTimeStamp: DateTime.now().subtract(const Duration(days: 16)),postImage : widget.imageListMaMa,postContent: 'This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.',postLikeCount: 20,postCommentCount: 1,),
+      ThreadPostData(userName: 'Aung Aung',userThumbnail: '',grade :'Year-3(Sapphire)',postTimeStamp: DateTime.now().subtract(const Duration(days: 20)),postImage : widget.imageListAA,postContent: 'According to the jaw fragments of primates found in Myaing Township, Magway Division, Myanmar history can be assumed to have started 40 million years ago. Similarly, the discovery named Pondaungia found in Pondaung area and the discovery named Mogaungensis found near Mogaung village indicate that anthropoids have been living in Myanmar since 40 million years ago. A higher primate found in Pondaung area, Myanmar, called Dawn Ape with the scientific name of Amphipithecus, was tested to be 40 million years old.'
       'Similarly, Myanmar, like other countries in the world, went through the Stone Age. Paleolithic humans have been living along the Irrawaddy River in Central Myanmar since the Middle Pleistocene. In 9000 BC (11,000 years ago), traces of Late Paleolithic and Early Neolithic civilizations was found in Padalin Cave. Neolithic humans lived in the Padalin cave from 5740 BC (7740 years ago) to 4570 BC (6570 years ago). Neolithic tools and weapons have been widely found in Tanintharyi in the south, in Putao in the north, from the foothills of Rakhine Yoma in the west to Thanlwin River in the east.',postLikeCount: 11,postCommentCount: 9,),
-      ThreadPostData(userName: 'Kyaw Kyaw',userThumbnail: '',grade :'Year-1(Ruby)',postTimeStamp: DateTime.now().subtract(new Duration(days: 30)),postImage : widget.imageListKyawKyaw,postContent: 'This is test content,My name is Kyaw Kyaw. I live in yangon.This is test content, My name is Kyaw Kyaw. I live in yangon.This is test content, My name is . I live in yangon.This is test content, My name is . I live in yangon.This is test content,My name is .',postLikeCount: 30,postCommentCount: 10,),
-      ThreadPostData(userName: 'Head Master',userThumbnail: '',grade :'Year-3(Gold)',postTimeStamp: DateTime.now().subtract(new Duration(days: 40)),postImage : widget.imageListHead,postContent: 'This is test content,My name is U Ba. I live in yangon.',postLikeCount: 23,postCommentCount: 13,),
-      ThreadPostData(userName: 'Teacher Yi',userThumbnail: '',grade :'Year-2(Diamond)',postTimeStamp: DateTime.now().subtract(new Duration(days: 50)),postImage : widget.imageListYi,postContent: 'This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.',postLikeCount: 15,postCommentCount: 2,),
-      ThreadPostData(userName: 'Teacher Sin',userThumbnail: '',grade :'Year-4(Platinum)',postTimeStamp: DateTime.now().subtract(new Duration(days: 400)),postImage : widget.imageListSin,postContent: 'This is test content,My name is Sin. I live in yangon.Welcome Everyone.This is test content, My name is Sin. I live in yangon. Welcome Everyone.This is test content,My name is Sin. I live in yangon. Welcome Everyone.This is test content,My name is Sin. I live in yangon. Welcome Everyone.',postLikeCount: 26,postCommentCount: 9,),
+      ThreadPostData(userName: 'Kyaw Kyaw',userThumbnail: '',grade :'Year-1(Ruby)',postTimeStamp: DateTime.now().subtract(const Duration(days: 30)),postImage : widget.imageListKyawKyaw,postContent: 'This is test content,My name is Kyaw Kyaw. I live in yangon.This is test content, My name is Kyaw Kyaw. I live in yangon.This is test content, My name is . I live in yangon.This is test content, My name is . I live in yangon.This is test content,My name is .',postLikeCount: 30,postCommentCount: 10,),
+      ThreadPostData(userName: 'Head Master',userThumbnail: '',grade :'Year-3(Gold)',postTimeStamp: DateTime.now().subtract(const Duration(days: 40)),postImage : widget.imageListHead,postContent: 'This is test content,My name is U Ba. I live in yangon.',postLikeCount: 23,postCommentCount: 13,),
+      ThreadPostData(userName: 'Teacher Yi',userThumbnail: '',grade :'Year-2(Diamond)',postTimeStamp: DateTime.now().subtract(const Duration(days: 50)),postImage : widget.imageListYi,postContent: 'This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.This is test content,My name is Ma Ma. I live in yangon.',postLikeCount: 15,postCommentCount: 2,),
+      ThreadPostData(userName: 'Teacher Sin',userThumbnail: '',grade :'Year-4(Platinum)',postTimeStamp: DateTime.now().subtract(const Duration(days: 400)),postImage : widget.imageListSin,postContent: 'This is test content,My name is Sin. I live in yangon.Welcome Everyone.This is test content, My name is Sin. I live in yangon. Welcome Everyone.This is test content,My name is Sin. I live in yangon. Welcome Everyone.This is test content,My name is Sin. I live in yangon. Welcome Everyone.',postLikeCount: 26,postCommentCount: 9,),
     ];
 
 
@@ -86,16 +86,16 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
                 children: [
                   ElevatedButton(
                       style : ElevatedButton.styleFrom(
-                        primary: AppColor.cBottomNavyBlueColor
+                        backgroundColor: AppColor.cBottomNavyBlueColor
                       ),
                       onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => CreatePostScreen()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const CreatePostScreen()));
                   },
-                      child: Text('Create Post')),
+                      child: const Text('Create Post')),
                 IconButton(onPressed: (){
 
                 },
-                    icon: Icon(Icons.sort,size: 30,)
+                    icon: const Icon(Icons.sort,size: 30,)
                 ),
 
               ],),
@@ -115,10 +115,10 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
                   // ),
                   _isLoading ? Positioned(
                       child: Container(
-                        child: Center(
+                        color: Colors.white.withOpacity(0.7),
+                        child: const Center(
                           child: CircularProgressIndicator(),
                         ),
-                        color: Colors.white.withOpacity(0.7),
                       )
                   ) : Container()
                 ],
@@ -133,7 +133,7 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
 
   Widget _listTile(ThreadPostData data){
     return Padding(
-      padding: EdgeInsets.only(top: 2,bottom: 2),
+      padding: const EdgeInsets.only(top: 2,bottom: 2),
       child: Card(
           elevation: 2,
           child: Column(
@@ -143,21 +143,21 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                     Padding(
+                     const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Icon(Icons.person,size: 34,),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(data.userName?? '',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-                        SizedBox(height: 3,),
+                        Text(data.userName?? '',style: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                        const SizedBox(height: 3,),
                         Row(
                           children: [
-                            Text(data.grade!,style: TextStyle(fontSize: 15),),
-                            SizedBox(width: 10,),
+                            Text(data.grade!,style: const TextStyle(fontSize: 15),),
+                            const SizedBox(width: 10,),
                             //Text(readTimestamp(data.timeStamp!),style: TextStyle(fontSize: 20),),
-                            Text(timeago.format(data.postTimeStamp!),style: TextStyle(fontSize: 15),),
+                            Text(timeago.format(data.postTimeStamp!),style: const TextStyle(fontSize: 15),),
                           ],
                         ),
                       ],
@@ -192,9 +192,9 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
               //    ChewiePlayer(srcs: data.postVideo,),
               Padding(
                 padding: const EdgeInsets.all(10),
-                child: Text(data.postContent?? '',style: TextStyle(fontSize: 17),),
+                child: Text(data.postContent?? '',style: const TextStyle(fontSize: 17),),
               ),
-              Divider(color: Colors.black,),
+              const Divider(color: Colors.black,),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
@@ -202,20 +202,20 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.thumb_up),
+                        const Icon(Icons.thumb_up),
                         Padding(
-                          padding: EdgeInsets.only(left: 8),
-                          child: Text('Like ( ${data.postLikeCount} )',style: TextStyle(fontWeight: FontWeight.bold),),
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Text('Like ( ${data.postLikeCount} )',style: const TextStyle(fontWeight: FontWeight.bold),),
                         ),
                       ],
                     ),
                     //SizedBox(width: 10,),
                     Row(
                       children: [
-                        Icon(Icons.mode_comment),
+                        const Icon(Icons.mode_comment),
                         Padding(
-                          padding: EdgeInsets.only(left: 8),
-                          child: Text('Comment ( ${data.postCommentCount} )',style: TextStyle(fontWeight: FontWeight.bold),),
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Text('Comment ( ${data.postCommentCount} )',style: const TextStyle(fontWeight: FontWeight.bold),),
                         ),
                       ],
                     ),

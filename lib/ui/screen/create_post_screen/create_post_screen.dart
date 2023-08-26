@@ -6,7 +6,7 @@ import '../../../utils/colors.dart';
 
 class CreatePostScreen extends StatefulWidget {
 
-   CreatePostScreen({super.key});
+   const CreatePostScreen({super.key});
 
   @override
   State<CreatePostScreen> createState() => _CreatePostScreenState();
@@ -72,11 +72,11 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                 onPressed: (){
                   print('Content is ${createTextController.text}');
                   //Navigator.pop(context);
-            }, child: Text('POST')),
+            }, child: const Text('POST')),
           )
         ],
         backgroundColor: AppColor.themeNavyBlueColor,
-        title: Text('Create post'),
+        title: const Text('Create post'),
 
       ),
       body: Padding(
@@ -86,10 +86,10 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
           children: [Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
+              const Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Icon(Icons.person,size: 30,),
                   ),
                   Text("Your Name",
@@ -99,17 +99,17 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
               ),
               ElevatedButton(onPressed:(){
                 getImages();
-              }, child: Text('Photo/Video'),
+              },
                 style: ElevatedButton.styleFrom(
                     primary: AppColor.themeGreenColor
-                ),
+                ), child: const Text('Photo/Video'),
               ),
 
             ],
           ),
 
-            Divider(height: 1,color: Colors.black,),
-             Container(
+            const Divider(height: 1,color: Colors.black,),
+             SizedBox(
                 //color: Colors.red,
                 //width: 300.0,
                 height: 300,
@@ -130,7 +130,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
               child: TextFormField(
                 autofocus: true,
                 focusNode: createTextFocus,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: InputBorder.none,
                   hintText: 'Write your content',
                   hintMaxLines: 4

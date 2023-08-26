@@ -11,7 +11,7 @@ import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import '../../../utils/colors.dart';
 
 class ChatScreen extends StatefulWidget {
-   ChatScreen({super.key});
+   const ChatScreen({super.key});
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
@@ -25,7 +25,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('This is chat screen'),
+        title: const Text('This is chat screen'),
         centerTitle: true,
         backgroundColor: AppColor.themeGreenColor,
       ),

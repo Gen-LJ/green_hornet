@@ -30,9 +30,8 @@ class _AnnouncementDetailState extends State<AnnouncementDetail> {
 
 
   Widget _announcementDetail(AnnouncementData data){
-     int i;
     return Padding(
-      padding: EdgeInsets.only(top: 2,bottom: 2),
+      padding: const EdgeInsets.only(top: 2,bottom: 2),
       child: Card(
           elevation: 2,
           child: Column(
@@ -42,21 +41,21 @@ class _AnnouncementDetailState extends State<AnnouncementDetail> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Icon(Icons.person,size: 34,),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(data.userName?? '',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-                        SizedBox(height: 3,),
+                        Text(data.userName?? '',style: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                        const SizedBox(height: 3,),
                         Row(
                           children: [
-                            Text(data.grade!,style: TextStyle(fontSize: 15),),
-                            SizedBox(width: 10,),
+                            Text(data.grade!,style: const TextStyle(fontSize: 15),),
+                            const SizedBox(width: 10,),
                             //Text(readTimestamp(data.timeStamp!),style: TextStyle(fontSize: 20),),
-                            Text(timeago.format(data.postTimeStamp!),style: TextStyle(fontSize: 15),),
+                            Text(timeago.format(data.postTimeStamp!),style: const TextStyle(fontSize: 15),),
                           ],
                         ),
                       ],
@@ -91,7 +90,7 @@ class _AnnouncementDetailState extends State<AnnouncementDetail> {
               //    ChewiePlayer(srcs: data.postVideo,),
               Padding(
                 padding: const EdgeInsets.all(10),
-                child: Text(data.postContent?? '',style: TextStyle(fontSize: 17),),
+                child: Text(data.postContent?? '',style: const TextStyle(fontSize: 17),),
               ),
               if(data.attachmentFiles != null)
                 TextButton(onPressed: (){
@@ -99,7 +98,7 @@ class _AnnouncementDetailState extends State<AnnouncementDetail> {
                   builder: (context)=> PdfViewScreen(file: data.attachmentFiles,)));
                },
                             child: Text(data.attachmentFiles ?? '')),
-              Divider(color: Colors.black,),
+              const Divider(color: Colors.black,),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
@@ -107,20 +106,20 @@ class _AnnouncementDetailState extends State<AnnouncementDetail> {
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.thumb_up),
+                        const Icon(Icons.thumb_up),
                         Padding(
-                          padding: EdgeInsets.only(left: 8),
-                          child: Text('Like ( ${data.postLikeCount} )',style: TextStyle(fontWeight: FontWeight.bold),),
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Text('Like ( ${data.postLikeCount} )',style: const TextStyle(fontWeight: FontWeight.bold),),
                         ),
                       ],
                     ),
                     //SizedBox(width: 10,),
                     Row(
                       children: [
-                        Icon(Icons.mode_comment),
+                        const Icon(Icons.mode_comment),
                         Padding(
-                          padding: EdgeInsets.only(left: 8),
-                          child: Text('Comment ( ${data.postCommentCount} )',style: TextStyle(fontWeight: FontWeight.bold),),
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Text('Comment ( ${data.postCommentCount} )',style: const TextStyle(fontWeight: FontWeight.bold),),
                         ),
                       ],
                     ),

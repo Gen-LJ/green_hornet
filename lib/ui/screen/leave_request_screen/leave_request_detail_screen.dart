@@ -12,7 +12,7 @@ class _LeaveRequestDetailState extends State<LeaveRequestDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Leave Request Detail Screen'),
+        title: const Text('Leave Request Detail Screen'),
       ),
     );
   }
