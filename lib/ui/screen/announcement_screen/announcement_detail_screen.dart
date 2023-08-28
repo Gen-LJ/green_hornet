@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:green_hornet/model/announcement_data_structure.dart';
 import 'package:green_hornet/ui/widget/pdf_view_screen.dart';
 import 'package:green_hornet/utils/colors.dart';
+import 'package:open_file/open_file.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import '../../widget/multi_image_view/image_slide_show.dart';
 import '../../widget/multi_image_view/smart_image.dart';
@@ -93,7 +94,11 @@ class _AnnouncementDetailState extends State<AnnouncementDetail> {
                 child: Text(data.postContent?? '',style: const TextStyle(fontSize: 17),),
               ),
               if(data.attachmentFiles != null)
-                TextButton(onPressed: (){
+                TextButton(
+               //    onPressed: () async {
+               //      OpenFile.open(data.attachmentFiles);
+               //    },
+                    onPressed: (){
                   Navigator.push(context, MaterialPageRoute(
                   builder: (context)=> PdfViewScreen(file: data.attachmentFiles,)));
                },
