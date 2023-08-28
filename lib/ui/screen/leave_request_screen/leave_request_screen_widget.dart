@@ -5,6 +5,7 @@ import 'package:green_hornet/ui/widget/common_space_divider_widget.dart';
 import '../../../utils/colors.dart';
 import '../../../utils/helper.dart';
 import '../drawer_screen/drawer_widget.dart';
+import 'add_request_screen.dart';
 class LeaveRequestWidget extends StatefulWidget {
   final uBaAttachFile;
    LeaveRequestWidget({super.key, this.uBaAttachFile});
@@ -23,7 +24,7 @@ class _LeaveRequestWidgetState extends State<LeaveRequestWidget> {
           userName: 'U Ba',
           grade: 'Year-3 (Gold)',
           studentName: 'Ko Ko',
-          postTimeStamp: DateTime.now().subtract(Duration(days: 2)),
+          postTimeStamp: DateTime.now().subtract(const Duration(days: 2)),
           postTitle: 'Sick Leave because of too much rain and Ko Ko is so Lazy to come to school',
           postDescription: 'At some point in your career, you may want to take some time off work. Regardless of your specific reason, you can do this by submitting a leave request to your employer. Knowing how to properly structure your request is a useful skill that may help you throughout your career. In this article, we explain what a leave request is, show you how to write a leave request email and provide a few examples of effective leave request emails that you can use as inspiration when drafting your own.',
           timeUploaded: DateTime(2021,3,24),
@@ -36,7 +37,7 @@ class _LeaveRequestWidgetState extends State<LeaveRequestWidget> {
           userName: 'Daw Mya',
           grade: 'Year-4 (Sapphire)',
           studentName: 'Mg Mg',
-          postTimeStamp: DateTime.now().subtract(Duration(days: 5)),
+          postTimeStamp: DateTime.now().subtract(const Duration(days: 5)),
           postTitle: 'Covid Leave',
           postDescription: 'At some point in your career, you may want to take some time off work. Regardless of your specific reason, you can do this by submitting a leave request to your employer. Knowing how to properly structure your request is a useful skill that may help you throughout your career. In this article, we explain what a leave request is, show you how to write a leave request email and provide a few examples of effective leave request emails that you can use as inspiration when drafting your own.',
           timeUploaded: DateTime(2021,1,5),
@@ -72,11 +73,13 @@ class _LeaveRequestWidgetState extends State<LeaveRequestWidget> {
                           backgroundColor: AppColor.themeNavyBlueColor
                       ),
                       onPressed: (){
-
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const AddRequestScreen()));
                       }, child: const Row(
-                    children: [
-                      Text('Add Request',style: TextStyle(color: Colors.white),),
-                      Icon(Icons.add_rounded,color: Colors.white,),
+                         children: [
+                          Text('Add Request',style: TextStyle(color: Colors.white),),
+                          Icon(Icons.add_rounded,color: Colors.white,),
                     ],
                   ))
                 ],
