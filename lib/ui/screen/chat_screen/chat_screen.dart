@@ -4,7 +4,9 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:green_hornet/ui/widget/icon_and_image.dart';
 import 'package:green_hornet/ui/widget/pdf_view_screen.dart';
+import 'package:green_hornet/utils/images.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 
@@ -28,6 +30,7 @@ class _ChatScreenState extends State<ChatScreen> {
         title: const Text('This is chat screen'),
         centerTitle: true,
         backgroundColor: AppColor.themeGreenColor,
+        
       ),
     );
   }
