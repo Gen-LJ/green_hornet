@@ -48,6 +48,7 @@ dependencies:
   syncfusion_flutter_pdfviewer: ^22.2.10
   file_picker: ^5.3.4
   open_file: ^3.3.2
+  readmore: ^2.2.0
 
 
 dev_dependencies:

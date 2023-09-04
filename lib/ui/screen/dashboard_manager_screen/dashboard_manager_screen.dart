@@ -21,7 +21,7 @@ class _DashBoardManagerScreenState extends State<DashBoardManagerScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    dashboardManagerController.currantIndex.value = 2;
+    dashboardManagerController.currantIndex.value = 0;
   }
 
   @override

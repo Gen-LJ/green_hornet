@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:green_hornet/ui/screen/dashboard_manager_screen/dashboard_manager_screen.dart';
 import 'package:green_hornet/ui/widget/icon_and_image.dart';
-import 'package:green_hornet/utils/colors.dart';
 import 'package:green_hornet/utils/images.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,12 +16,10 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
-    // if (context.read<CityProvider>().regionList.isEmpty) {
-    //   context.read<CityProvider>().initCityData();
-    // }
+
 
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-    Future.delayed(const Duration(seconds: 7), () {
+    Future.delayed(const Duration(seconds: 2), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) => DashBoardManagerScreen(),
       ));

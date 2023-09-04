@@ -6,6 +6,7 @@ import '../../../utils/colors.dart';
 import '../../../utils/helper.dart';
 import '../drawer_screen/drawer_widget.dart';
 import 'add_request_screen.dart';
+
 class LeaveRequestWidget extends StatefulWidget {
   final uBaAttachFile;
    LeaveRequestWidget({super.key, this.uBaAttachFile});
@@ -53,7 +54,7 @@ class _LeaveRequestWidgetState extends State<LeaveRequestWidget> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 8,right: 8),
+              padding: const EdgeInsets.only(left :5,right: 8),
               child: buildAppTitleRow(() {
                 showPopup(context);
               },
@@ -63,9 +64,9 @@ class _LeaveRequestWidgetState extends State<LeaveRequestWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 8),
+              padding: const EdgeInsets.only(left: 15),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   TextButton(
                       style: TextButton.styleFrom(
@@ -78,7 +79,9 @@ class _LeaveRequestWidgetState extends State<LeaveRequestWidget> {
                             MaterialPageRoute(builder: (context) => const AddRequestScreen()));
                       }, child: const Row(
                          children: [
-                          Text('Add Request',style: TextStyle(color: Colors.white),),
+                          Text('Add Request',style: TextStyle(
+                              fontSize :12,
+                              color: Colors.white),),
                           Icon(Icons.add_rounded,color: Colors.white,),
                     ],
                   ))
@@ -86,24 +89,21 @@ class _LeaveRequestWidgetState extends State<LeaveRequestWidget> {
               ),
             ),
             Expanded(
-              child: Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    side: const BorderSide(
-                        color: Colors.grey
-                    )
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListView.separated(
-                      separatorBuilder: (context,index){
-                        return const Divider(color: Colors.grey,);
-                      },
-                      itemCount: dummyLRData.length,
-                      itemBuilder: (context,index){
-                        return _leaveRequest(dummyLRData[index] );
-                      }),
-                ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListView.builder(
+                    itemCount: dummyLRData.length,
+                    itemBuilder: (context,index){
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(9)
+                            ),
+                            child: _leaveRequest(dummyLRData[index] )),
+                      );
+                    }),
               ),
             ),
           ],
@@ -129,7 +129,7 @@ class _LeaveRequestWidgetState extends State<LeaveRequestWidget> {
                   formatType: formatForDateTime(FormatType.d)),
               style: const TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 25),),
+                  fontSize: 20),),
           if(data.timeUploaded != null)
             Text(
                 dateFormatted(
@@ -140,30 +140,37 @@ class _LeaveRequestWidgetState extends State<LeaveRequestWidget> {
       title:  Text(data.postTitle ?? '',
         style: const TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 18),),
+            fontSize: 15),),
       subtitle: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          SizedBox(height: 2,),
           Row(
             children: [
-              Text(data.studentName ?? '',style: const TextStyle(fontWeight: FontWeight.bold),),
+              Text(data.studentName ?? '',style: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold),),
               horizontalSpace(7),
-              Text(data.grade ?? '')
+              Text(data.grade ?? '',style: TextStyle(fontSize: 12),)
             ],
           ),
+          SizedBox(height: 4),
           Row(
             children: [
               //Text('From '),
               Text(dateFormatted(date: data.startDate.toString(),
                   formatType: formatForDateTime(FormatType.date)),style: const TextStyle(
                   color: Colors.blue,
-                  fontWeight: FontWeight.bold
+                  fontWeight: FontWeight.bold,
+                fontSize: 12
               ),),
               const Text(' To '),
               Text(dateFormatted(date: data.endDate.toString(),
                   formatType: formatForDateTime(FormatType.date)),style: const TextStyle(
                   color: Colors.blue,
-                  fontWeight: FontWeight.bold),)
+                  fontWeight: FontWeight.bold,
+              fontSize: 12),
+              )
             ],
           ),
         ],
@@ -177,14 +184,18 @@ class _LeaveRequestWidgetState extends State<LeaveRequestWidget> {
         ),
           onPressed: (){
 
-          }, child: const Text('Pending',style: TextStyle(color: Colors.white),)) :
+          }, child: const Text('Pending',style: TextStyle(
+          fontSize: 10,
+          color: Colors.white),)) :
         TextButton(
             style: TextButton.styleFrom(
                 backgroundColor: AppColor.themeGreenColor
             ),
             onPressed: (){
 
-            }, child: const Text('Approved',style: TextStyle(color: Colors.white),))
+            }, child: const Text('Approved',style: TextStyle(
+            fontSize: 10,
+            color: Colors.white),))
 
     );
 

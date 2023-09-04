@@ -69,8 +69,12 @@ class _AddRequestScreenState extends State<AddRequestScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Request Form'),
-        backgroundColor: AppColor.themeGreenColor,
+        title: const Text('Request Form',style: TextStyle(color: Colors.black),),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(onPressed: (){
+          Navigator.pop(context);
+        }, icon: Icon(Icons.arrow_back_rounded,color: Colors.black,)),
       ),
       body: SingleChildScrollView(
         child: Padding(

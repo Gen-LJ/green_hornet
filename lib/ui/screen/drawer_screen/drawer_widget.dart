@@ -13,26 +13,23 @@ Widget buildAppTitleRow(Function() menuFun, String date,{String? title}) {
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           // GestureDetector(
           //   onTap: menuFun,
           //   child: assetSvdImageWidget(image: DefaultImages.menuIcn, height: 18, colorFilter: ColorFilter.mode(AppColor.cLabel, BlendMode.srcIn)),
           // ),
-          ElevatedButton(
+          IconButton(
             onPressed: menuFun,
-            style: ElevatedButton.styleFrom(
-              //elevation: 0,
-              backgroundColor: AppColor.themeGreenColor
-            ),
-            child: assetSvdImageWidget(image: DefaultImages.menuIcn, height: 18, colorFilter: ColorFilter.mode(AppColor.cLabel, BlendMode.srcIn)),
+            icon: assetSvdImageWidget(image: DefaultImages.menuIcn, height: 18, colorFilter: ColorFilter.mode(AppColor.cLabel, BlendMode.srcIn)),
           ),
           horizontalSpace(16),
           Text(
-            title?? '',
+            title ?? '',
             style: const TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
-              fontSize: 20
+              fontSize: 16
             ),
           ),
         ],
@@ -41,7 +38,7 @@ Widget buildAppTitleRow(Function() menuFun, String date,{String? title}) {
         children: [
           Text(
             date,
-            style: pSemiBold14,
+            style: pSemiBold12,
           ),
           // Text(
           //   dateMonth,

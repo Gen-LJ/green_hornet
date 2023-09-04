@@ -123,7 +123,7 @@ class _AnnouncementScreenWidgetState extends State<AnnouncementScreenWidget> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 8,right: 8),
+              padding: const EdgeInsets.only(left : 3,right: 12),
               child: buildAppTitleRow(() {
                 showPopup(context);
               },
@@ -134,24 +134,21 @@ class _AnnouncementScreenWidgetState extends State<AnnouncementScreenWidget> {
             ),
             verticalSpace(7),
             Expanded(
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  side: const BorderSide(
-                    color: Colors.grey
-                  )
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListView.separated(
-                      separatorBuilder: (context,index){
-                        return const Divider(color: Colors.grey,);
-                      },
-                      itemCount: aDummyData.length,
-                      itemBuilder: (context,index){
-                        return _announceList(aDummyData[index]);
-                      }),
-                ),
+              child: Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: ListView.builder(
+                    itemCount: aDummyData.length,
+                    itemBuilder: (context,index){
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(9)
+                            ),
+                            child: _announceList(aDummyData[index])),
+                      );
+                    }),
               ),
             ),
           ],
@@ -177,19 +174,28 @@ class _AnnouncementScreenWidgetState extends State<AnnouncementScreenWidget> {
         formatType: formatForDateTime(FormatType.d)),
             style: const TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 25),),
+                fontSize: 20),),
           if(data.timeUploaded != null)
           Text(
               dateFormatted(
               date: data.timeUploaded.toString(),
-              formatType: formatForDateTime(FormatType.MMM))),
+              formatType: formatForDateTime(FormatType.MMM)),style:
+            const TextStyle(fontSize: 12),),
         ],
       ),
       title:  Text(data.postTitle ?? '',
         style: const TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 18),),
-      subtitle:  Text('${data.subtitle1 ?? ''}\n${data.subtitle2 ?? ''} '),
+            fontSize: 16),),
+      subtitle:  Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('${data.subtitle1 ?? ''} ',style: TextStyle(fontSize: 12),),
+          SizedBox(height: 3),
+          Text('${data.subtitle2 ?? ''} ',style: TextStyle(fontSize: 12),),
+        ],
+      ),
       isThreeLine: true,
     );
   }

@@ -2,9 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:green_hornet/ui/screen/story_screen/create_post_screen.dart';
+import 'package:green_hornet/ui/screen/story_screen/story_detail_screen.dart';
 import 'package:green_hornet/ui/widget/multi_image_view/image_slide_show.dart';
 import 'package:green_hornet/ui/widget/multi_image_view/thread_multi_image_view.dart';
 import 'package:green_hornet/utils/colors.dart';
+import 'package:readmore/readmore.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import '../../../model/thread_post_data_structure.dart';
 import '../../../utils/helper.dart';
@@ -50,7 +52,7 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
   Widget build(BuildContext context) {
 
     List<ThreadPostData> dummyData = [
-      ThreadPostData(userName: 'Ko Ko',userThumbnail: '',grade :'Year-1(Diamond)',postTimeStamp: DateTime.now().subtract(const Duration(seconds: 10)),postImage:  widget.imageListKoKo,postContent: 'This is first post,Hello',postLikeCount: 4,postCommentCount: 5,),
+      ThreadPostData(userName: 'Ko Ko',userThumbnail: '',grade :'Year-1(Diamond)',postTimeStamp: DateTime.now().subtract(const Duration(seconds: 10)),postImage:  widget.imageListKoKo,postContent: 'ကိုကောင်းတင်တဲ့စာ',postLikeCount: 4,postCommentCount: 5,),
       ThreadPostData(userName: 'Mg Mg',userThumbnail: '',grade :'Year-1(Gold)',postTimeStamp: DateTime.now().subtract(const Duration(days: 3)),postVideo : widget.landscapeVideoSrc,postContent: 'Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,',postLikeCount: 10,postCommentCount: 6,),
       ThreadPostData(userName: 'Zaw Zaw',userThumbnail: '',grade :'Year-3(Ruby)',postTimeStamp: DateTime.now().subtract(const Duration(days: 7)),postImage : widget.imageListZawZaw,postContent: 'This is test content',postLikeCount: 13,postCommentCount: 4,),
       ThreadPostData(userName: 'U Kyaw',userThumbnail: '',grade :'Year-5(Platinum)',postTimeStamp: DateTime.now().subtract(const Duration(days: 12)),postVideo : widget.portraitVideoSrc,postContent: 'This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.',postLikeCount: 16,postCommentCount: 3,),
@@ -69,7 +71,7 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 8.0,right: 8.0),
+              padding: const EdgeInsets.only(right: 10.0),
               child: buildAppTitleRow(() {
                 showPopup(context);
               },
@@ -135,7 +137,7 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
     return Padding(
       padding: const EdgeInsets.only(top: 2,bottom: 2),
       child: Card(
-          elevation: 2,
+          elevation: 1,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -150,14 +152,14 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(data.userName?? '',style: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                        Text(data.userName?? '',style: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                         const SizedBox(height: 3,),
                         Row(
                           children: [
-                            Text(data.grade!,style: const TextStyle(fontSize: 15),),
+                            Text(data.grade!,style: const TextStyle(fontSize: 12),),
                             const SizedBox(width: 10,),
                             //Text(readTimestamp(data.timeStamp!),style: TextStyle(fontSize: 20),),
-                            Text(timeago.format(data.postTimeStamp!),style: const TextStyle(fontSize: 15),),
+                            Text(timeago.format(data.postTimeStamp!),style: const TextStyle(fontSize: 12),),
                           ],
                         ),
                       ],
@@ -167,57 +169,100 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
               ),
               //Divider(height: 4,color: Colors.black,),
               if(data.postImage != null)
-                GestureDetector(
-                  onTap: (){
-                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                        builder: (context) => ImageViewer(imageUrls: data.postImage!)));
-                  },
-                  child: ImageSlideshow(
-                      children: data.postImage!.map(
-                            (e) => ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                          child: SmartImage(
-                            e,
-                            fit: BoxFit.cover,
-                            isPost: true,
+                Padding(
+                  padding: const EdgeInsets.only(left: 8,right: 8),
+                  child: GestureDetector(
+                    onTap: (){
+                       Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                          builder: (context) => ImageViewer(imageUrls: data.postImage!)));
+                    },
+                    child: ImageSlideshow(
+                        children: data.postImage!.map(
+                              (e) => ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                            child: SmartImage(
+                              e,
+                              fit: BoxFit.cover,
+                              isPost: true,
+                            ),
                           ),
-                        ),
-                      )
-                          .toList(),),
+                        )
+                            .toList(),),
+                  ),
                 ),
               //_PhotoSlide(data),
               //  if(data.postVideo != null)
               //    ChewiePlayer(srcs: data.postVideo,),
               Padding(
                 padding: const EdgeInsets.all(10),
-                child: Text(data.postContent?? '',style: const TextStyle(fontSize: 17),),
+                child: ReadMoreText(data.postContent?? '',style: const TextStyle(fontSize: 14),
+                trimLines: 3,
+                  colorClickableText: Colors.blue,
+                  trimMode: TrimMode.Line,
+                  trimCollapsedText: 'See more',
+                  trimExpandedText: 'See less',
+
+                ),
               ),
-              const Divider(color: Colors.black,),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(top: 8.0,bottom: 8.0,left:12,right: 12),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
-                        const Icon(Icons.thumb_up),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8),
-                          child: Text('Like ( ${data.postLikeCount} )',style: const TextStyle(fontWeight: FontWeight.bold),),
-                        ),
+                        const Icon(Icons.heart_broken),
+                        Text(' ${data.postLikeCount} ',style: const TextStyle(fontSize :12,fontWeight: FontWeight.bold),),
                       ],
                     ),
                     //SizedBox(width: 10,),
                     Row(
                       children: [
-                        const Icon(Icons.mode_comment),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8),
-                          child: Text('Comment ( ${data.postCommentCount} )',style: const TextStyle(fontWeight: FontWeight.bold),),
-                        ),
+                        //const Icon(Icons.mode_comment),
+                        Text(' ${data.postCommentCount} comments ',style: const TextStyle(fontSize : 12,fontWeight: FontWeight.bold),),
                       ],
+                    ),
+                  ],
+                ),
+              ),
+
+              const Divider(color: Colors.grey,),
+               Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    GestureDetector(
+                      onTap: (){
+
+                      },
+                      child: Row(
+                        children: [
+                          Icon(Icons.thumb_up),
+                          Padding(
+                            padding: EdgeInsets.only(left: 8),
+                            child: Text('Like',style: TextStyle(fontSize :10),),
+                          ),
+                        ],
+                      ),
+                    ),
+                    //SizedBox(width: 10,),
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => StoryDetail(data: data)));
+                      },
+                      child: Row(
+                        children: [
+                          Icon(Icons.mode_comment),
+                          Padding(
+                            padding: EdgeInsets.only(left: 8),
+                            child: Text('Comment',style: TextStyle(fontSize : 10,),),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),

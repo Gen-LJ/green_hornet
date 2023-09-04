@@ -75,8 +75,15 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
             }, child: const Text('POST')),
           )
         ],
-        backgroundColor: AppColor.themeNavyBlueColor,
-        title: const Text('Create post'),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: (){
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_rounded,color: Colors.black,),
+        ),
+        title: const Text('Create post',style: TextStyle(color: Colors.black),),
 
       ),
       body: Padding(
