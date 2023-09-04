@@ -17,7 +17,7 @@ class GreenHornet extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             locale: Locale('en','US'),
             theme: themeController.theme,
-            home: SplashScreen()
+            home: const SplashScreen()
             //DashBoardManagerScreen()
           );
         });

@@ -32,7 +32,7 @@ class _DiscussionScreenWidgetState extends State<DiscussionScreenWidget> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(right: 8),
+              padding: const EdgeInsets.only(left :3,right: 12),
               child: buildAppTitleRow(() {
                 showPopup(context);
               },
@@ -42,7 +42,7 @@ class _DiscussionScreenWidgetState extends State<DiscussionScreenWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 8),
+              padding: const EdgeInsets.only(left: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -58,7 +58,10 @@ class _DiscussionScreenWidgetState extends State<DiscussionScreenWidget> {
                       },
                       child: const Row(
                             children: [
-                                Text('Create Discussion',style: TextStyle(color: Colors.white),),
+                                Text('Create Discussion',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                  fontSize: 12),),
                                 Icon(Icons.add_rounded,color: Colors.white,),
                     ],
                   ))
@@ -120,14 +123,14 @@ class _DiscussionScreenWidgetState extends State<DiscussionScreenWidget> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(data.userName?? '',style: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                            Text(data.userName?? '',style: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                             const SizedBox(height: 3,),
                             Row(
                               children: [
-                                Text(data.grade!,style: const TextStyle(fontSize: 15),),
+                                Text(data.grade!,style: const TextStyle(fontSize: 12),),
                                 const SizedBox(width: 10,),
                                 //Text(readTimestamp(data.timeStamp!),style: TextStyle(fontSize: 20),),
-                                Text(timeago.format(data.postTimeStamp!),style: const TextStyle(fontSize: 15),),
+                                Text(timeago.format(data.postTimeStamp!),style: const TextStyle(fontSize: 12),),
                               ],
                             ),
                           ],
@@ -142,7 +145,10 @@ class _DiscussionScreenWidgetState extends State<DiscussionScreenWidget> {
                           //border: Border.all(color: Colors.black),
                           borderRadius: BorderRadius.circular(3),
                           color: Colors.blue),
-                         child: const Text('OPEN',style: TextStyle(color: Colors.white),)) :
+                         child: const Text('OPEN',
+                           style: TextStyle(color: Colors.white,
+                           fontSize: 10
+                           ),)) :
                     Container(
                         //margin: EdgeInsets.all(10),
                         padding: EdgeInsets.all(3),
@@ -150,39 +156,46 @@ class _DiscussionScreenWidgetState extends State<DiscussionScreenWidget> {
                             //border: Border.all(color: Colors.black),
                             borderRadius: BorderRadius.circular(3),
                             color: AppColor.themeGreenColor),
-                        child: const Text('PRIVATE',style: TextStyle(color: Colors.white),))
+                        child: const Text('PRIVATE',
+                          style: TextStyle(color: Colors.white,
+                          fontSize: 10
+                          ),))
 
                   ],
                 ),
               ),
               //Divider(height: 4,color: Colors.black,),
               if(data.postImage != null)
-                GestureDetector(
-                  onTap: (){
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ImageViewer(imageUrls: data.postImage!)));
-                  },
-                  child: ImageSlideshow(
-                    children: data.postImage!.map(
-                          (e) => ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: SmartImage(
-                          e,
-                          fit: BoxFit.cover,
-                          isPost: true,
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0,right: 8),
+                  child: GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ImageViewer(imageUrls: data.postImage!)));
+                    },
+                    child: ImageSlideshow(
+                      children: data.postImage!.map(
+                            (e) => ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: SmartImage(
+                            e,
+                            fit: BoxFit.cover,
+                            isPost: true,
+                          ),
                         ),
-                      ),
-                    )
-                        .toList(),),
+                      )
+                          .toList(),),
+                  ),
                 ),
               //_PhotoSlide(data),
               //  if(data.postVideo != null)
               //    ChewiePlayer(srcs: data.postVideo,),
               Padding(
                 padding: const EdgeInsets.all(10),
-                child: ReadMoreText(data.postContent?? '',style: const TextStyle(fontSize: 17),
+                child: ReadMoreText(data.postContent?? '',
+                  style: const TextStyle(fontSize: 14),
                   trimLines: 3,
                   colorClickableText: Colors.blue,
                   trimMode: TrimMode.Line,
@@ -191,7 +204,7 @@ class _DiscussionScreenWidgetState extends State<DiscussionScreenWidget> {
 
                 ),
               ),
-              const Divider(color: Colors.black,),
+              const Divider(color: Colors.grey,),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
@@ -212,7 +225,9 @@ class _DiscussionScreenWidgetState extends State<DiscussionScreenWidget> {
                         const Icon(Icons.mode_comment),
                         Padding(
                           padding: const EdgeInsets.only(left: 8),
-                          child: Text('Comment ( ${data.postCommentCount} )',style: const TextStyle(fontWeight: FontWeight.bold),),
+                          child: Text('Comment ( ${data.postCommentCount} )',
+                            style: const TextStyle(
+                            fontSize: 10),),
                         ),
                       ],
                     ),

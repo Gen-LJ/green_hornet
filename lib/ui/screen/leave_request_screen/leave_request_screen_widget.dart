@@ -54,7 +54,7 @@ class _LeaveRequestWidgetState extends State<LeaveRequestWidget> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left :5,right: 8),
+              padding: const EdgeInsets.only(left :3,right: 12),
               child: buildAppTitleRow(() {
                 showPopup(context);
               },
@@ -90,7 +90,7 @@ class _LeaveRequestWidgetState extends State<LeaveRequestWidget> {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(5.0),
                 child: ListView.builder(
                     itemCount: dummyLRData.length,
                     itemBuilder: (context,index){

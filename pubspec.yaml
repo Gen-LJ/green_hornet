@@ -49,6 +49,7 @@ dependencies:
   file_picker: ^5.3.4
   open_file: ^3.3.2
   readmore: ^2.2.0
+  persistent_bottom_nav_bar: ^5.0.2
 
 
 dev_dependencies:

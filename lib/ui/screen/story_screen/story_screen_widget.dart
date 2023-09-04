@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:green_hornet/ui/screen/story_screen/create_post_screen.dart';
-import 'package:green_hornet/ui/screen/story_screen/story_detail_screen.dart';
+import 'package:green_hornet/ui/screen/story_screen/comment_screen.dart';
 import 'package:green_hornet/ui/widget/multi_image_view/image_slide_show.dart';
 import 'package:green_hornet/ui/widget/multi_image_view/thread_multi_image_view.dart';
 import 'package:green_hornet/utils/colors.dart';
@@ -71,7 +71,7 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(right: 10.0),
+              padding: const EdgeInsets.only(left:3,right: 12.0),
               child: buildAppTitleRow(() {
                 showPopup(context);
               },
@@ -81,7 +81,7 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 8,right: 8),
+              padding: const EdgeInsets.only(left: 15,right: 8),
               child: Row(
                 //crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -93,7 +93,7 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
                       onPressed: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const CreatePostScreen()));
                   },
-                      child: const Text('Create Post')),
+                      child: const Text('Create Post',style: TextStyle(fontSize: 12),)),
                 IconButton(onPressed: (){
 
                 },
@@ -156,10 +156,18 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
                         const SizedBox(height: 3,),
                         Row(
                           children: [
-                            Text(data.grade!,style: const TextStyle(fontSize: 12),),
+                            Text(data.grade!,style: const TextStyle(
+                                fontSize: 12,
+                                // color: Colors.grey
+                            ),
+                            ),
                             const SizedBox(width: 10,),
                             //Text(readTimestamp(data.timeStamp!),style: TextStyle(fontSize: 20),),
-                            Text(timeago.format(data.postTimeStamp!),style: const TextStyle(fontSize: 12),),
+                            Text(timeago.format(data.postTimeStamp!),
+                              style: const TextStyle(
+                                fontSize: 12,
+                              //color: Colors.grey
+                              ),),
                           ],
                         ),
                       ],
@@ -170,7 +178,7 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
               //Divider(height: 4,color: Colors.black,),
               if(data.postImage != null)
                 Padding(
-                  padding: const EdgeInsets.only(left: 8,right: 8),
+                  padding: const EdgeInsets.only(left: 10,right: 8),
                   child: GestureDetector(
                     onTap: (){
                        Navigator.push(
@@ -230,7 +238,7 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
 
               const Divider(color: Colors.grey,),
                Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -238,7 +246,7 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
                       onTap: (){
 
                       },
-                      child: Row(
+                      child: const Row(
                         children: [
                           Icon(Icons.thumb_up),
                           Padding(
@@ -252,9 +260,9 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
                     GestureDetector(
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(
-                            builder: (context) => StoryDetail(data: data)));
+                            builder: (context) => CommentScreen(data: data)));
                       },
-                      child: Row(
+                      child: const Row(
                         children: [
                           Icon(Icons.mode_comment),
                           Padding(

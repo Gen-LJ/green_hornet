@@ -90,7 +90,8 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
         padding: const EdgeInsets.only(right: 14,left: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [Row(
+          children: [
+            Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Row(
@@ -119,7 +120,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
              SizedBox(
                 //color: Colors.red,
                 //width: 300.0,
-                height: 300,
+                height: 200,
                 child: selectedImages.isEmpty
                 ? const Center(child: Text('Sorry nothing selected!!'))
                 : GridView.builder(

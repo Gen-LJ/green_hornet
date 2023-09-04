@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:green_hornet/ui/screen/bottom_nav_bar_screen/bottom_nav_bar_screen.dart';
 import 'package:green_hornet/ui/screen/dashboard_manager_screen/dashboard_manager_screen.dart';
 import 'package:green_hornet/ui/widget/icon_and_image.dart';
 import 'package:green_hornet/utils/images.dart';
@@ -21,7 +22,8 @@ class _SplashScreenState extends State<SplashScreen>
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => DashBoardManagerScreen(),
+        builder: (context) => BottomNavBarScreen()
+            //DashBoardManagerScreen(),
       ));
     });
   }

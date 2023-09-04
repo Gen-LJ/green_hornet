@@ -7,16 +7,15 @@ import '../../widget/multi_image_view/image_slide_show.dart';
 import '../../widget/multi_image_view/smart_image.dart';
 import '../../widget/multi_image_view/thread_multi_image_view.dart';
 
-class StoryDetail extends StatefulWidget {
-  const StoryDetail({super.key, required this.data});
-
+class CommentScreen extends StatefulWidget {
+  const CommentScreen({super.key, required this.data});
   final ThreadPostData data;
 
   @override
-  State<StoryDetail> createState() => _StoryDetailState();
+  State<CommentScreen> createState() => _CommentScreenState();
 }
 
-class _StoryDetailState extends State<StoryDetail> {
+class _CommentScreenState extends State<CommentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,14 +24,16 @@ class _StoryDetailState extends State<StoryDetail> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(Icons.arrow_back)),
+            icon: Icon(Icons.arrow_back),color: Colors.black,),
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const Padding(
               padding: EdgeInsets.only(right: 8.0),
               child: Icon(
                 Icons.person,
                 size: 34,
+                color: Colors.black,
               ),
             ),
             Column(
@@ -41,7 +42,8 @@ class _StoryDetailState extends State<StoryDetail> {
                 Text(
                   widget.data.userName ?? '',
                   style: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.bold),
+                      fontSize: 15, fontWeight: FontWeight.bold,
+                  color: Colors.black),
                 ),
                 const SizedBox(
                   height: 3,
@@ -50,7 +52,9 @@ class _StoryDetailState extends State<StoryDetail> {
                   children: [
                     Text(
                       widget.data.grade!,
-                      style: const TextStyle(fontSize: 12),
+                      style: const TextStyle(
+                          fontSize: 12,
+                      color: Colors.grey),
                     ),
                     const SizedBox(
                       width: 10,
@@ -58,7 +62,7 @@ class _StoryDetailState extends State<StoryDetail> {
                     //Text(readTimestamp(data.timeStamp!),style: TextStyle(fontSize: 20),),
                     Text(
                       timeago.format(widget.data.postTimeStamp!),
-                      style: const TextStyle(fontSize: 12),
+                      style: const TextStyle(fontSize: 12,color: Colors.grey),
                     ),
                   ],
                 ),
@@ -66,6 +70,8 @@ class _StoryDetailState extends State<StoryDetail> {
             ),
           ],
         ),
+        backgroundColor: Colors.white,
+        elevation: 0,
       ),
       body: Center(
         child: Column(
