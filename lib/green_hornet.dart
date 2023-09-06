@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:green_hornet/ui/screen/splash_screen/splash.dart';
-import 'package:green_hornet/ui/screen/dashboard_manager_screen/dashboard_manager_screen.dart';
 import 'core/controller/setting_controller/theme_controller.dart';
 
 class GreenHornet extends StatelessWidget {
@@ -20,6 +19,7 @@ class GreenHornet extends StatelessWidget {
             home: const SplashScreen()
             //DashBoardManagerScreen()
           );
-        });
+        }
+        );
 }
 }

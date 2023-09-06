@@ -2,17 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:green_hornet/ui/screen/story_screen/story_screen_widget.dart';
 
 
-class StoryScreen extends StatefulWidget {
-   const StoryScreen({super.key});
-
-  @override
-  State<StoryScreen> createState() => _StoryScreenState();
-}
-
-
-class _StoryScreenState extends State<StoryScreen> {
+class StoryScreen extends StatelessWidget {
+    StoryScreen({super.key});
 
   var landscapesrc = "https://assets.mixkit.co/videos/preview/mixkit-spinning-around-the-earth-29351-large.mp4";
+
   var potraitsrc = "https://assets.mixkit.co/videos/preview/mixkit-a-girl-blowing-a-bubble-gum-at-an-amusement-park-1226-large.mp4";
 
   var photoListKK = <String>[
@@ -47,6 +41,7 @@ class _StoryScreenState extends State<StoryScreen> {
   var photoListYi = ['https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80'];
 
   var photoListSin =['https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80'];
+
   @override
   Widget build(BuildContext context) {
     return StoryScreenWidget(
@@ -61,6 +56,4 @@ class _StoryScreenState extends State<StoryScreen> {
       landscapeVideoSrc: landscapesrc,
       portraitVideoSrc: potraitsrc,);
   }
-
-
 }

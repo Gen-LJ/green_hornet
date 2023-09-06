@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:green_hornet/model/thread_post_data_structure.dart';
 import 'package:readmore/readmore.dart';
 import 'package:timeago/timeago.dart' as timeago;
-
 import '../../widget/multi_image_view/image_slide_show.dart';
 import '../../widget/multi_image_view/smart_image.dart';
 import '../../widget/multi_image_view/thread_multi_image_view.dart';
 
 class CommentScreen extends StatefulWidget {
-  const CommentScreen({super.key, required this.data});
+  const CommentScreen({super.key, required this.data, this.autofocus});
   final ThreadPostData data;
+  final autofocus;
 
   @override
   State<CommentScreen> createState() => _CommentScreenState();
@@ -159,7 +159,9 @@ class _CommentScreenState extends State<CommentScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+
+                          },
                           child: const Row(
                             children: [
                               Icon(Icons.thumb_up),
@@ -196,6 +198,7 @@ class _CommentScreenState extends State<CommentScreen> {
                     const Divider(
                       color: Colors.grey,
                     ),
+                    if(widget.data.postCommentCount != null)
                     ListView.builder(
                       shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
@@ -221,16 +224,18 @@ class _CommentScreenState extends State<CommentScreen> {
               ),
             ),
             Container(
-              height: 65,
+              //height: 65,
               color: Colors.white,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(left: 10.0,top: 3,bottom: 3),
                 child: Row(
                   children: [
                     Expanded(
                       child: TextFormField(
+                        autofocus : widget.autofocus,
                         decoration: InputDecoration(
                           hintText: 'Write a comment',
+                          hintStyle: const TextStyle(fontSize: 12),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10)),
                         ),

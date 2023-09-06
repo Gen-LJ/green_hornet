@@ -3,7 +3,10 @@ class DefaultImages {
 
   static String homeStory = "assets_gh/svg/home_story.svg";
   static String chatIcn = "assets_gh/svg/chat.svg";
-  
+  static String storyIcon = "assets_gh/svg/story.svg";
+  static String storyIcon1 ="assets_gh/svg/story1.svg";
+
+
   static String storeGoLogo = "assets/svg/store_go_logo.svg";
   static String envelopeIcn = 'assets/svg/envelope.svg';
   static String googleIcn = 'assets/svg/google.svg';

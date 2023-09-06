@@ -18,8 +18,13 @@ class _LeaveRequestDetailState extends State<LeaveRequestDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.leaveRequestData.postTitle ?? ''),
-        backgroundColor: AppColor.themeGreenColor,),
+        elevation: 0,
+        leading: IconButton.outlined(onPressed: ()
+          {
+            Navigator.pop(context);
+            }, icon: Icon(Icons.arrow_back_rounded,color: Colors.black,),),
+        title: Text(widget.leaveRequestData.postTitle ?? '',style: TextStyle(color: Colors.black),),
+        backgroundColor: Colors.white,),
       body: SingleChildScrollView(
           child: _leaveRequestDetail(widget.leaveRequestData)),
     );

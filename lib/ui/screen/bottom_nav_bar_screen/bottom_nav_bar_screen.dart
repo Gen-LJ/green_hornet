@@ -24,46 +24,51 @@ class BottomNavBarScreen extends StatelessWidget {
       items: _navBarsItems(),
       navBarStyle: NavBarStyle.style3,
       backgroundColor: AppColor.themeNavyBlueColor,
+      // decoration: NavBarDecoration(
+      //   borderRadius: BorderRadius.circular(10.0),
+      //   colorBehindNavBar: AppColor.themeNavyBlueColor
+      // ),
+
     );
   }
   List<Widget> _buildScreens() {
     return [
-      const StoryScreen(),
-      const AnnouncementScreen(),
-      const HomeScreen(),
+      StoryScreen(),
+      AnnouncementScreen(),
       DiscussionScreen(),
-      LeaveRequestScreen()
+      LeaveRequestScreen(),
+      const HomeScreen(),
     ];
   }
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.home),
+        icon: const Icon(CupertinoIcons.circle_grid_hex),
         title: ("Story"),
         activeColorPrimary: AppColor.themeGreenColor,
         inactiveColorPrimary: Colors.white,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.announcement_outlined),
-        title: ("Announcement"),
+        icon: const Icon(CupertinoIcons.speaker),
+        title: ("Notice"),
         activeColorPrimary: AppColor.themeGreenColor,
         inactiveColorPrimary: Colors.white,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.recent_actors),
-        title: ("Profile"),
-        activeColorPrimary: AppColor.themeGreenColor,
-        inactiveColorPrimary: Colors.white,
-      ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(Icons.display_settings),
-        title: ("Discussion"),
+        icon: const Icon(CupertinoIcons.text_bubble_fill),
+        title: ("Discuss"),
         activeColorPrimary: AppColor.themeGreenColor,
         inactiveColorPrimary: Colors.white,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.add_card),
-        title: ("Leave Request"),
+        title: ("Request"),
+        activeColorPrimary: AppColor.themeGreenColor,
+        inactiveColorPrimary: Colors.white,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(Icons.child_care_rounded),
+        title: ("Profile"),
         activeColorPrimary: AppColor.themeGreenColor,
         inactiveColorPrimary: Colors.white,
       ),

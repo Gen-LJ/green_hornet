@@ -1,7 +1,5 @@
-
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-
 
 import 'package:green_hornet/ui/widget/common_space_divider_widget.dart';
 import 'package:green_hornet/utils/colors.dart';
@@ -44,9 +42,10 @@ class _AddRequestScreenState extends State<AddRequestScreen>
     // }
   }
 
-  openFile(PlatformFile file) async{
+  openFile(PlatformFile file) async {
     OpenFile.open(file.path);
   }
+
   //
   // Future<File> saveFilePermanently(PlatformFile file) async {
   //   final appStorage = await getApplicationDocumentsDirectory();
@@ -58,7 +57,7 @@ class _AddRequestScreenState extends State<AddRequestScreen>
   void initState() {
     loadingController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 10),
+      duration: const Duration(seconds: 10),
     )..addListener(() {
         setState(() {});
       });
@@ -69,12 +68,20 @@ class _AddRequestScreenState extends State<AddRequestScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Request Form',style: TextStyle(color: Colors.black),),
+        title: const Text(
+          'Request Form',
+          style: TextStyle(color: Colors.black, fontSize: 16),
+        ),
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: IconButton(onPressed: (){
-          Navigator.pop(context);
-        }, icon: Icon(Icons.arrow_back_rounded,color: Colors.black,)),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back_rounded,
+              color: Colors.black,
+            )),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -92,8 +99,8 @@ class _AddRequestScreenState extends State<AddRequestScreen>
                     ),
                   ),
                   Text(
-                    "Your Name",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    "Name",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                 ],
               ),
@@ -119,15 +126,15 @@ class _AddRequestScreenState extends State<AddRequestScreen>
               //   ),
               //   controller: _grade,
               // ),
-              verticalSpace(10),
-              TextFormField(
-                decoration: InputDecoration(
-                    labelText: 'Enter Title',
-                    prefixIcon: const Icon(Icons.title),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-                controller: _title,
-              ),
+              // verticalSpace(10),
+              // TextFormField(
+              //   decoration: InputDecoration(
+              //       labelText: 'Enter Title',
+              //       prefixIcon: const Icon(Icons.title),
+              //       border: OutlineInputBorder(
+              //           borderRadius: BorderRadius.circular(10))),
+              //   controller: _title,
+              // ),
               verticalSpace(10),
               TextFormField(
                 maxLines: 6,
@@ -137,81 +144,82 @@ class _AddRequestScreenState extends State<AddRequestScreen>
                         borderRadius: BorderRadius.circular(10))),
                 controller: _description,
               ),
-              verticalSpace(20),
-              TextFormField(
-                controller: _startDate,
-                decoration: InputDecoration(
-                  icon: Icon(Icons.calendar_today_rounded),
-                  labelText: 'Select Start Date',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-                onTap: () async {
-                  DateTime? pickStartDate = await showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime(2000),
-                      lastDate: DateTime(3000));
-                  if (pickStartDate != null) {
-                    setState(() {
-                      _startDate.text = dateFormatted(
-                          date: pickStartDate.toString(),
-                          formatType: formatForDateTime(FormatType.date));
-                    });
-                  }
-                },
-              ),
               verticalSpace(10),
-              TextFormField(
-                controller: _endDate,
-                decoration: InputDecoration(
-                  icon: Icon(Icons.calendar_today_rounded),
-                  labelText: 'Select End Date',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-                onTap: () async {
-                  DateTime? pickStartDate = await showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime(2000),
-                      lastDate: DateTime(3000));
-                  if (pickStartDate != null) {
-                    setState(() {
-                      _endDate.text = dateFormatted(
-                          date: pickStartDate.toString(),
-                          formatType: formatForDateTime(FormatType.date));
-                    });
-                  }
-                },
+              Row(
+                children: [
+                  SizedBox(
+                    width: 300,
+                    child: Expanded(
+                      child: TextFormField(
+                        keyboardType: TextInputType.none,
+                          controller: _startDate,
+                          decoration: InputDecoration(
+                            labelText: 'Select Start Date',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                          ),
+                          onTap: selectStartDate),
+                    ),
+                  ),
+                  IconButton(
+                      onPressed: selectStartDate,
+                      icon: const Icon(Icons.calendar_today_rounded))
+                ],
               ),
               verticalSpace(10),
               Row(
                 children: [
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColor.themeGreenColor),
-                      onPressed: selectFile,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [Icon(Icons.add), Text('Attach Files')],
-                      )),
+                  SizedBox(
+                    width: 300,
+                    child: TextFormField(
+                      keyboardType: TextInputType.none,
+                        controller: _endDate,
+                        decoration: InputDecoration(
+                          labelText: 'Select End Date',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
+                        onTap: selectEndDate),
+                  ),
+                  IconButton(
+                      onPressed: selectEndDate,
+                      icon: Icon(Icons.calendar_today_rounded))
                 ],
               ),
+              verticalSpace(10),
+              ElevatedButton(
+                  onPressed: () {
+                    selectFile();
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColor.themeGreenColor),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Icon(Icons.add), Text('Attach Files')],
+                  )),
+
+              // ElevatedButton(
+              //     style: ElevatedButton.styleFrom(
+              //         backgroundColor: AppColor.themeGreenColor),
+              //     onPressed: selectFile,
+              //     child: const Row(
+              //       crossAxisAlignment: CrossAxisAlignment.stretch,
+              //       children: [
+              //         Icon(Icons.add), Text('Attach Files')
+              //       ],
+              //     )),
               if (_platformFile != null)
-                Container(
-                  //color: Colors.indigo,
-                  height: 200,
-                  child: GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4),
-                      itemCount: _platformFile!.length,
-                      itemBuilder: (context, index) {
-                        final file = _platformFile![index];
-                        return buildFile(file);
-                      }),
-                ),
+                GridView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 4),
+                    itemCount: _platformFile!.length,
+                    itemBuilder: (context, index) {
+                      final file = _platformFile![index];
+                      return buildFile(file);
+                    }),
               // _platformFile != null ?
               //     Container(
               //       padding: EdgeInsets.all(10),
@@ -269,11 +277,26 @@ class _AddRequestScreenState extends State<AddRequestScreen>
               //   // height: 150,
               //   // color: Colors.black,
               // ),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColor.themeNavyBlueColor),
-                  onPressed: () {},
-                  child: Text('Upload Request'))
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      style:
+                          ElevatedButton.styleFrom(backgroundColor: Colors.grey),
+                      child: Text('Cancel')),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColor.themeNavyBlueColor),
+                      onPressed: () {},
+                      child: const Text('Upload')),
+                ],
+              )
             ],
           ),
         ),
@@ -290,11 +313,11 @@ class _AddRequestScreenState extends State<AddRequestScreen>
     final extension = file.extension ?? 'none';
     final color = getColor(extension);
     return InkWell(
-      onTap: ()async{
+      onTap: () async {
         OpenFile.open(file.path);
       },
       child: Container(
-        padding: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
         //color: Colors.pink,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -302,22 +325,22 @@ class _AddRequestScreenState extends State<AddRequestScreen>
             Expanded(
                 child: Container(
               alignment: Alignment.center,
-               width: double.infinity,
-               //height: 20,
+              width: double.infinity,
+              //height: 20,
               decoration: BoxDecoration(
                   color: color, borderRadius: BorderRadius.circular(10)),
-              child: Text('.$extension',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold
-              ),),
+              child: Text(
+                '.$extension',
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
             )),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             Text(
               file.name,
-              style: TextStyle(overflow: TextOverflow.ellipsis),
+              style: const TextStyle(overflow: TextOverflow.ellipsis),
             ),
             Text(fileSize),
             Container(
@@ -333,6 +356,36 @@ class _AddRequestScreenState extends State<AddRequestScreen>
         ),
       ),
     );
+  }
+
+  selectStartDate() async {
+    DateTime? pickStartDate = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2000),
+        lastDate: DateTime(3000));
+    if (pickStartDate != null) {
+      setState(() {
+        _startDate.text = dateFormatted(
+            date: pickStartDate.toString(),
+            formatType: formatForDateTime(FormatType.date));
+      });
+    }
+  }
+
+  selectEndDate() async {
+    DateTime? pickStartDate = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2000),
+        lastDate: DateTime(3000));
+    if (pickStartDate != null) {
+      setState(() {
+        _endDate.text = dateFormatted(
+            date: pickStartDate.toString(),
+            formatType: formatForDateTime(FormatType.date));
+      });
+    }
   }
 
   getColor(String extension) {

@@ -52,7 +52,7 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
   Widget build(BuildContext context) {
 
     List<ThreadPostData> dummyData = [
-      ThreadPostData(userName: 'Ko Ko',userThumbnail: '',grade :'Year-1(Diamond)',postTimeStamp: DateTime.now().subtract(const Duration(seconds: 10)),postImage:  widget.imageListKoKo,postContent: 'ကိုကောင်းတင်တဲ့စာ',postLikeCount: 4,postCommentCount: 5,),
+      ThreadPostData(userName: 'Ko Ko',userThumbnail: '',grade :'Year-1(Diamond)',postTimeStamp: DateTime.now().subtract(const Duration(seconds: 10)),postImage:  widget.imageListKoKo,postContent: 'ကိုကောင်းတင်တဲ့စာ',postLikeCount: 4,),
       ThreadPostData(userName: 'Mg Mg',userThumbnail: '',grade :'Year-1(Gold)',postTimeStamp: DateTime.now().subtract(const Duration(days: 3)),postVideo : widget.landscapeVideoSrc,postContent: 'Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,Nice to meet u everyone,',postLikeCount: 10,postCommentCount: 6,),
       ThreadPostData(userName: 'Zaw Zaw',userThumbnail: '',grade :'Year-3(Ruby)',postTimeStamp: DateTime.now().subtract(const Duration(days: 7)),postImage : widget.imageListZawZaw,postContent: 'This is test content',postLikeCount: 13,postCommentCount: 4,),
       ThreadPostData(userName: 'U Kyaw',userThumbnail: '',grade :'Year-5(Platinum)',postTimeStamp: DateTime.now().subtract(const Duration(days: 12)),postVideo : widget.portraitVideoSrc,postContent: 'This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.This is test content,I am U kyaw.',postLikeCount: 16,postCommentCount: 3,),
@@ -229,7 +229,17 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
                     Row(
                       children: [
                         //const Icon(Icons.mode_comment),
-                        Text(' ${data.postCommentCount} comments ',style: const TextStyle(fontSize : 12,fontWeight: FontWeight.bold),),
+                        GestureDetector(
+                          onTap: (){Navigator.push(context, MaterialPageRoute(
+                              builder: (context) => CommentScreen(data: data,autofocus: false,)));
+                            },
+                          child: Text(
+                            data.postCommentCount != null ?
+                            ' ${data.postCommentCount} comments ' :
+                            ''
+                            ,style: const TextStyle(fontSize : 12,fontWeight: FontWeight.bold),),
+                        ),
+
                       ],
                     ),
                   ],
@@ -238,7 +248,7 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
 
               const Divider(color: Colors.grey,),
                Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(5.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -260,7 +270,7 @@ class _StoryScreenWidgetState extends State<StoryScreenWidget> {
                     GestureDetector(
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(
-                            builder: (context) => CommentScreen(data: data)));
+                            builder: (context) => CommentScreen(data: data,autofocus: true,)));
                       },
                       child: const Row(
                         children: [
